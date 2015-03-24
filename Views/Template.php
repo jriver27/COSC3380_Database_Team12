@@ -3,40 +3,7 @@
 
 <head lang="en">
     <title>Medical Inventory Login</title>
-    <style type="text/css">
-        body {
-            background-color: lightblue;
-        }
-
-        #header {
-            background-color: darkblue;
-        }
-
-        #footer {
-            text-align: left;
-            border-top: dashed;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            width: 150px;
-            display: block;
-            float: left;
-            margin: auto;
-        }
-
-        input[type=button] {
-            background-color: darkblue;
-            font-family: serif;
-            color: azure;
-            width: 16%;
-            float: inherit;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="Site.css"/>
 </head>
 
 <body>
