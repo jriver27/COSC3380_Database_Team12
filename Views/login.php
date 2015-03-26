@@ -13,7 +13,13 @@ session_start();
     <div id="header">
         <h1>Medical Inventory Login</h1>
     </div>
-
+    <div id="leftMenuContainer" >
+        <ul class="navigation">
+            <li><a href="../index.php">Home Page</a>
+            <li><a href= "AboutUs.php">About Us</a>
+            <li><a href="ContactUs.php">Contact Us</a>
+        </ul>
+    </div>
     <div id="registrationform">
         <h2>Login to your account</h2>
 		<?php
@@ -23,6 +29,7 @@ session_start();
 				unset($_SESSION['error']);
 			}
 		?>
+
         <form action="verifylogin.php" method="post" name="loginform">
             <input type="hidden" name="action" value="register">
             <ul class="nobullet">
@@ -44,8 +51,8 @@ session_start();
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
-			<a href="view inventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
+			<a href="RestrictedIndex.php">Inventory</a>
+	        <a href="logout.php">Logout</a>
     </div>
     <div class="profile-picture"> </div>
 </body>

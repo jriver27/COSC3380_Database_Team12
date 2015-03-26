@@ -22,10 +22,6 @@
         </ul>
     </div>
 </div>
-<?php
-    echo "My first PHP script!";
-?>
-
     <div id="footer">
         <span> Please Contact Us anytime.</span>
     </div>

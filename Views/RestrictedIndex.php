@@ -11,14 +11,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <html>
 
 <head lang="en">
-    <title>Members Only</title>
-    <link rel="stylesheet" type="text/css" href="Site.css"/>
+    <title>Medical Inventory Login</title>
+    <link rel="stylesheet" type="text/css" href="../Site.css"/>
 </head>
 
 <body>
     <div id="header">
-        <h1>Medical Inventory Members Only</h1>
+        <h1>Medical Inventory Login</h1>
     </div>
+<?php
+    echo "My first PHP script!";
+?>
     <div id="leftMenuContainer" >
         <ul class="navigation">
             <li><a href="../index.php">Home Page</a>
@@ -31,8 +34,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <li><a href="Logout.php">Log out</a>
         </ul>
     </div>
-
-
     <div id="footer">
         <span> Please Contact Us anytime.</span>
     </div>
