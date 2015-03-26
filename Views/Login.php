@@ -2,51 +2,28 @@
 <html>
 
 <head lang="en">
-    <title>Medical Inventory Login</title>
-    <style type="text/css">
-        body {
-            background-color: lightblue;
-        }
-
-        #header {
-            background-color: darkblue;
-        }
-
-        #footer {
-            text-align: left;
-            border-top: dashed;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            width: 150px;
-            display: block;
-            float: left;
-            margin: auto;
-        }
-
-        input[type=button] {
-            background-color: darkblue;
-            font-family: serif;
-            color: azure;
-            width: 16%;
-            float: inherit;
-            margin: auto;
-        }
-    </style>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../Site.css"/>
 </head>
 
 <body>
-    <div id="header">
+<div class="wrapper">
+    <div id="header"></h1>
         <h1>Medical Inventory Login</h1>
+        <img src="http://www.math.uh.edu/analysis/Pics/Graphics/UHlogo.gif" alt="University of Houston" </img>
     </div>
+    <div id="leftMenuContainer" >
 
+        <ul class="navigation">
+            <li><a href= "../index.php">Home Page</a>
+            <li><a href= "AboutUs.php">About Us</a>
+            <li><a href= "ContactUs.php">Contact Us</a>
+            <li><a href= "Login.php">Login</a>
+        </ul>
+    </div>
     <div id="registrationform">
         <h2>Login to your account</h2>
-        <form action="register.cgi" method="POST" name="loginform">
+        <form action="loggedIn.cgi" method="POST" name="loginform">
             <input type="hidden" name="action" value="register">
             <ul class="nobullet">
                 <li>
@@ -105,11 +82,11 @@
             }
         </script>
     </div>
-
+</div>
     <div id="footer">
-        <span> Please Contact Us anytime.</span>
+        <span> Please Contact Us anytime </span>
     </div>
-    <div class="profile-picture"> </div>
+
 </body>
 
 </html>
