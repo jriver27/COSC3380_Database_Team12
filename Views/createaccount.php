@@ -1,7 +1,13 @@
 <?php
 session_start();
-?> 
 
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['position'] == 'admin'){
+    echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+} else {
+    header("Location: view inventory.php");
+}
+
+?>
 <html>
 
 <head lang="en">
@@ -47,16 +53,8 @@ session_start();
         <h1>Medical Inventory Login</h1>
     </div>
 
-    <div id="registrationform">
-        <h2>Login to your account</h2>
-		<?php
-			if(isset($_SESSION['error'])) 
-			{ 
-				echo '<div id="error">'.$_SESSION['error'].'</div>';
-				unset($_SESSION['error']);
-			}
-		?>
-        <form action="verifylogin.php" method="post" name="loginform">
+    <div id="put anything here">
+	<form action="insertaccount.php" method="post" name="loginform">
             <input type="hidden" name="action" value="register">
             <ul class="nobullet">
                 <li>
@@ -72,16 +70,13 @@ session_start();
             </ul>
             <input type="submit" alt="login" name="login" value="Login" id="submit_btn">
         </form>
-
     </div>
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
-			<a href="view inventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
     </div>
-    <div class="profile-picture"> </div>
+	<a href="view inventory.php">Inventory</a>
+	<a href="logout.php">Logout</a>
 </body>
 
 </html>
-

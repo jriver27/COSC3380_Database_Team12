@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo "Welcome to the member's area, " . $_SESSION['username'] . $_SESSION['position'];
+} else {
+    header("Location: login.php");
+}
+
+?>
 <html>
 
 <head lang="en">
@@ -43,15 +52,32 @@
     <div id="header">
         <h1>Medical Inventory Login</h1>
     </div>
-<?php
-    echo "My first PHP script!";
-?>
+
     <div id="put anything here">
+	<table>
+		<?php
+		include 'dbconnect.php';
+
+		$sql="SELECT * FROM $tbl_name";
+		$query = mysqli_query($link, $sql);
+		
+		while($row = mysqli_fetch_array($query)) 
+		{
+			echo '<tr>';
+				echo "<tr><td>".($row['Username'])."</td></tr>";
+			echo '</tr>';
+		}
+
+		?>
+	</table>
     </div>
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
     </div>
+	<a href="view inventory.php">Inventory</a>
+	<a href="createaccount.php">createaccount</a>
+	<a href="logout.php">Logout</a>
 </body>
 
 </html>
