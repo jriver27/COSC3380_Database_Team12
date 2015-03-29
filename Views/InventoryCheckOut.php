@@ -21,10 +21,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </div>
     <div id="leftMenuContainer" >
         <ul class="navigation">
-            <li><a href="../index.php">Home Page</a>
-            <li><a href= "AboutUs.php">About Us</a>
-            <li><a href="ContactUs.php">Contact Us</a>
-
             <li><a href="viewInventory.php">View Inventory</a>
             <li><a href= "InventoryCheckIn.php">Check In Inventory</a>
             <li><a href="InventoryCheckOut.php">Check Out Inventory</a>
@@ -51,9 +47,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
+        <a href="RestrictedIndex.php">Members Area</a>
+        <a href="logout.php">Logout</a>
     </div>
-	<a href="viewInventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
 </body>
 
 </html>

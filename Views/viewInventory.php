@@ -16,44 +16,44 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 </head>
 
 <body>
-    <div id="header">
-        <h1>View Medical Inventory</h1>
-    </div>
-    <div id="leftMenuContainer" >
-        <ul class="navigation">
-            <li><a href="../index.php">Home Page</a>
-            <li><a href= "AboutUs.php">About Us</a>
-            <li><a href="ContactUs.php">Contact Us</a>
+<div id="header">
+    <h1>View Medical Inventory</h1>
+</div>
+<div id="leftMenuContainer" >
+    <ul class="navigation">
+        <li><a href="viewInventory.php">View Inventory</a>
+        <li><a href= "InventoryCheckIn.php">Check In Inventory</a>
+        <li><a href="InventoryCheckOut.php">Check Out Inventory</a>
+        <li><a href="Logout.php">Log out</a>
+    </ul>
+</div>
+<div id="tableContainer">
+    <table>
+        <?php
+        include 'dbconnect.php';
 
-            <li><a href="viewInventory.php">View Inventory</a>
-            <li><a href= "InventoryCheckIn.php">Check In Inventory</a>
-            <li><a href="InventoryCheckOut.php">Check Out Inventory</a>
-            <li><a href="Logout.php">Log out</a>
-        </ul>
-    </div>
-    <div id="tableContainer">
-        <table>
-            <?php
-            include 'dbconnect.php';
+        $sql="SELECT * FROM $tbl_name";
+        $query = mysqli_query($link, $sql);
 
-            $sql="SELECT * FROM $tbl_name";
-            $query = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_array($query))
+        {
+            echo '<tr>';
+            echo "<tr><td>".($row['Username'])."</td></tr>";
+            echo '</tr>';
+        }
+        ?>
+    </table>
 
-            while($row = mysqli_fetch_array($query))
-            {
-                echo '<tr>';
-                    echo "<tr><td>".($row['Username'])."</td></tr>";
-                echo '</tr>';
-            }
-            ?>
-        </table>
-    </div>
+    <table><span > THIS IS WHERE WE WILL HAVE OUR INVENTORY</span> </table>
 
-    <div id="footer">
-        <span> Please Contact Us anytime.</span>
-    </div>
-	<a href="viewInventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
+</div>
+
+<div id="footer">
+    <span> Please Contact Us anytime.</span>
+    <a href="RestrictedIndex.php">Members Only Area</a>
+    <a href="logout.php">Logout</a>
+</div>
+
 </body>
 
 </html>

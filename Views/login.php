@@ -6,47 +6,21 @@ session_start();
 
 <head lang="en">
     <title>Medical Inventory Login</title>
-    <style type="text/css">
-        body {
-            background-color: lightblue;
-        }
-
-        #header {
-            background-color: darkblue;
-        }
-
-        #footer {
-            text-align: left;
-            border-top: dashed;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            width: 150px;
-            display: block;
-            float: left;
-            margin: auto;
-        }
-
-        input[type=button] {
-            background-color: darkblue;
-            font-family: serif;
-            color: azure;
-            width: 16%;
-            float: inherit;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../Site.css"/>
 </head>
 
 <body>
     <div id="header">
         <h1>Medical Inventory Login</h1>
     </div>
+    <div id="leftMenuContainer" >
 
+         <ul class="navigation">
+             <li><a href="../index.php">Home Page</a>
+                 <li><a href= "AboutUs.php">About Us</a>
+                 <li><a href="ContactUs.php">Contact Us</a>
+                 </ul>
+    </div>
     <div id="registrationform">
         <h2>Login to your account</h2>
 		<?php
@@ -77,10 +51,9 @@ session_start();
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
-			<a href="view inventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
+        <a href="RestrictedIndex.php">Members Area</a>
+	    <a href="logout.php">Logout</a>
     </div>
-    <div class="profile-picture"> </div>
 </body>
 
 </html>

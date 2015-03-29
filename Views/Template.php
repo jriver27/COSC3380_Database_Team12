@@ -1,53 +1,27 @@
-<!DOCTYPE html>
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+     echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+} else {
+     header("Location: login.php");
+    }
+
+?>
+
 <html>
 
 <head lang="en">
     <title>Medical Inventory Login</title>
-    <style type="text/css">
-        body {
-            background-color: lightblue;
-        }
-
-        #header {
-            background-color: darkblue;
-        }
-
-        #footer {
-            text-align: left;
-            border-top: dashed;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            width: 150px;
-            display: block;
-            float: left;
-            margin: auto;
-        }
-
-        input[type=button] {
-            background-color: darkblue;
-            font-family: serif;
-            color: azure;
-            width: 16%;
-            float: inherit;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../Site.css"/>
 </head>
 
 <body>
     <div id="header">
-        <h1>Medical Inventory Login</h1>
+        <h1>Template page</h1>
     </div>
-<?php
-    echo "My first PHP script!";
-?>
-    <div id="put anything here">
-    </div>
+
+
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>

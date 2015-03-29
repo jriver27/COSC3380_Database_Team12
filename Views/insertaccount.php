@@ -22,7 +22,7 @@ if($count==1){
     $_SESSION['username'] = $username;
 	if($count==1)
 	$_SESSION['position'] = 'admin';
-	$website = "view inventory.php";
+	$website = "RestrictedIndex.php";
 	header("Location:$website ");
 }
 else {

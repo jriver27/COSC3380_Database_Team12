@@ -20,11 +20,12 @@ if($count==1){
 	session_start();
 	$_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
+
 	if($count==1)
 		$_SESSION['position'] = 'admin';
 	else
 		$_SESSION['position'] = 'nurse';
-	$website = "view inventory.php";
+    $website = "RestrictedIndex.php";
 	header("Location:$website ");
 }
 else {

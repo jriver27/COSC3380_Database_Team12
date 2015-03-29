@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['position'] == 'admin'){
     echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
-    header("Location: view inventory.php");
+    header("../index.php");
 }
 
 ?>
@@ -12,40 +12,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
 
 <head lang="en">
     <title>Medical Inventory Login</title>
-    <style type="text/css">
-        body {
-            background-color: lightblue;
-        }
-
-        #header {
-            background-color: darkblue;
-        }
-
-        #footer {
-            text-align: left;
-            border-top: dashed;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            width: 150px;
-            display: block;
-            float: left;
-            margin: auto;
-        }
-
-        input[type=button] {
-            background-color: darkblue;
-            font-family: serif;
-            color: azure;
-            width: 16%;
-            float: inherit;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../Site.css"/>
 </head>
 
 <body>
@@ -53,7 +20,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
         <h1>Medical Inventory Login</h1>
     </div>
 
-    <div id="put anything here">
+    <div id="main">
 	<form action="insertaccount.php" method="post" name="loginform">
             <input type="hidden" name="action" value="register">
             <ul class="nobullet">
@@ -69,14 +36,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
                 </li>
             </ul>
             <input type="submit" alt="login" name="login" value="Login" id="submit_btn">
-        </form>
+    </form>
     </div>
 
     <div id="footer">
         <span> Please Contact Us anytime.</span>
+        <a href="RestrictedIndex.php">Members Area</a>
+        <a href="logout.php">Logout</a>
     </div>
-	<a href="view inventory.php">Inventory</a>
-	<a href="logout.php">Logout</a>
 </body>
 
 </html>
