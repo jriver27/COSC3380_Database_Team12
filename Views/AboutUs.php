@@ -2,32 +2,65 @@
 <html>
 
 <head lang="en">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../../favicon.ico" rel="icon">
     <title>About Us</title>
-    <link rel="stylesheet" type="text/css" href="../Site.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
 </head>
 
 <body>
-<div class="wrapper">
-    <div id="header"></h1>
-        <h1>Medical Inventory Login</h1>
-        <img src="http://www.math.uh.edu/analysis/Pics/Graphics/UHlogo.gif" alt="University of Houston" </img>
-    </div>
-    <div id="leftMenuContainer" >
-
-        <ul class="navigation">
-            <li><a href= "../index.php">Home Page</a>
-            <li><a href= "AboutUs.php">About Us</a>
-            <li><a href= "ContactUs.php">Contact Us</a>
-            <li><a href= "Login.php">Login</a>
-        </ul>
-    </div>
-    <div id="main">
-
+<div class="container">
+    <div class="masthead">
+        <h3 class="text-muted">
+           About Us
+        </h3>
+        <nav>
+            <ul class="nav nav-justified">
+                <li class="active">
+                    <a href="../index.php">
+                        Home
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
-    <div id="footer">
-        <span> Please Contact Us anytime.</span>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">About Us</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+            </div>
+        </div>
+    </nav>
+<div class="container">
+    <p>Medical items inventory database
+        :
+        Create a database of medical
+        items. A nurse or doctor would have to log in in order to take an item from
+        the medical supply warehouse. They would have to provide information like
+        what item they checked out, when they checked it out, what patient room it
+        is
+        going to, and the number of units of the item they took. These could be
+        medical items like heartbeat monitors, isolation (ISO) carts,
+        and allergen
+        carts
+        for patients who are allergic to latex, IV bags, medical gowns, etc.
+        (
+        Team 12
+        & Team 13
+        )</p>
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Please Contact Us anytime.</p>
     </div>
+</footer>
 </body>
 
 </html>
