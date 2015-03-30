@@ -12,20 +12,31 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 <head lang="en">
     <title>Check In Inventory</title>
-    <link rel="stylesheet" type="text/css" href="../Site.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
 </head>
 
 <body>
-    <div id="header">
-        <h1>Check In Inventory</h1>
-    </div>
-    <div id="leftMenuContainer" >
-        <ul class="navigation">
-            <li><a href="viewInventory.php">View Inventory</a>
-            <li><a href= "InventoryCheckIn.php">Check In Inventory</a>
-            <li><a href="InventoryCheckOut.php">Check Out Inventory</a>
-            <li><a href="Logout.php">Log out</a>
-        </ul>
+    <div class="container">
+        <div class="masthead">
+            <h3 class="text-muted">
+                Inventory Check In
+            </h3>
+            <nav>
+                <ul class="nav nav-justified">
+                    <li class="active">
+                        <a href="../index.php">
+                            Home
+                        </a>
+                    </li>
+                    <li class="active"><a href="createaccount.php">Create an Account</a></li>
+                    <li> <a href="viewInventory.php">View Inventory</a></li>                      </li>
+                    <li><a href= "InventoryCheckIn.php">Check In Inventory</a></li>
+                    <li><a href="InventoryCheckOut.php">Check Out Inventory</a></li>
+                    <li><a href="logout.php">Log out</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <div id="tableContainer">
         <table>
@@ -44,12 +55,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             ?>
         </table>
     </div>
-
-    <div id="footer">
-        <span> Please Contact Us anytime.</span>
-        <a href="RestrictedIndex.php">Members Area</a>
-        <a href="logout.php">Logout</a>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
+        </div>
+    </footer>
 
 </body>
 

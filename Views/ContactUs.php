@@ -3,7 +3,8 @@
 
 <head lang="en">
     <title>Contact US</title>
-    <link rel="stylesheet" type="text/css" href="../Site.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
 </head>
 
 <body>
@@ -22,9 +23,11 @@
         </ul>
     </div>
 </div>
-    <div id="footer">
-        <span> Please Contact Us anytime.</span>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
     </div>
+</footer>
 </body>
 
 </html>
