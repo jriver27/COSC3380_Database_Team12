@@ -6,13 +6,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 } else {
      header("Location: login.php");
     }
-
 ?>
 
-
 <?php
-
-
 // define variables and set to empty values
 $username = $SKU = $description = $manufacturer = $count = "";
 
@@ -96,16 +92,12 @@ function create_purchase_order($SKU, $count, $purchaser)
         </h3>
         <nav>
             <ul class="nav nav-justified">
-                <li class="active">
-                    <a href="../index.php">
-                        Home
-                    </a>
-                </li>
+                <li class="active"> <a href="RestrictedIndex.php">Home</a>
                 <li class="active"><a href="createaccount.php">Create an Account</a></li>
                 <li> <a href="viewInventory.php">View Inventory</a></li>                      </li>
                 <li><a href= "InventoryCheckIn.php">Check In Inventory</a></li>
                 <li><a href="InventoryCheckOut.php">Check Out Inventory</a></li>
-		<li><a href="PurchaseOrder.php">File Purchase Order</a></li>
+		        <li><a href="PurchaseOrder.php">Create Purchase Order</a></li>
                 <li><a href="logout.php">Log out</a></li>
             </ul>
         </nav>
@@ -154,30 +146,29 @@ if ($result->num_rows > 0) {
 <p><input type="number" name="ItemCount" min="1"></p>
 
 <p><INPUT TYPE = "Submit" Name = "Submit" VALUE = "Submit"></p>
-
 </form>
 
 <?php
 if(isset($_POST['Submit']))
 {
-echo "<h3>Purchase Order Submitted</h3>";
-echo "<br>";
-echo "Requestor: ";
-echo $_SESSION['username'];
-echo "<br>";
-echo "SKU: ";
-echo $SKU;
-echo "<br>";
-echo "Description: ";
-echo $description[$SKU];
-echo "<br>";
-echo "Manufacturer: ";
-echo get_manufacturer($manufacturer[$SKU]);
-echo "<br>";
-echo "Count: ";
-echo $count;
-echo "<br>";
-create_purchase_order($SKU, $count, $_SESSION['username']);
+    echo "<h3>Purchase Order Submitted</h3>";
+    echo "<br>";
+    echo "Requestor: ";
+    echo $_SESSION['username'];
+    echo "<br>";
+    echo "SKU: ";
+    echo $SKU;
+    echo "<br>";
+    echo "Description: ";
+    echo $description[$SKU];
+    echo "<br>";
+    echo "Manufacturer: ";
+    echo get_manufacturer($manufacturer[$SKU]);
+    echo "<br>";
+    echo "Count: ";
+    echo $count;
+    echo "<br>";
+    create_purchase_order($SKU, $count, $_SESSION['username']);
 }
 ?>
 

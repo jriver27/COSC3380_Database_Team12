@@ -9,8 +9,8 @@ session_start();
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="../favicon.ico" rel="icon">
     <title>Medical Inventory</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="css/sticky-footer-navbar.css"></link>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/sticky-footer-navbar.css"/>
 </head>
 <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -19,7 +19,7 @@ session_start();
                 <a class="navbar-brand" href="#">Medical Inventory</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" action ="views/verifylogin.php" method="post" name="loginform">
+                    <form class="navbar-form navbar-right" action ="Views/verifylogin.php" method="post" name="loginform">
                         <div class="form-group">
                         <input class="form-control" type="text" placeholder="Username"  name="username" id="username">
                         </div>
@@ -38,11 +38,15 @@ session_start();
                 <p>
                 <a class="btn btn-primary btn-lg" role="button" href="views/AboutUs.php">About Us »</a>
                 </p>
+                <div class="">
+                    <img src="http://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/slideshows/ms_overview_slideshow/493x335_ms_overview_slideshow.jpg?resize=309:210"
+                         class="img-rounded">
+                </div>
             </div>
         </div>
         <div class="container">
             <hr>
-            <footer>
+            <footer class="footer">
             <p>© COSC 3380 2015</p>
             </footer>
         </div>
