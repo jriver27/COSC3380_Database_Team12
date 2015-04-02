@@ -34,6 +34,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         <li> <a href="viewInventory.php">View Inventory</a></li>                      </li>
                         <li><a href= "InventoryCheckIn.php">Check In Inventory</a></li>
                         <li><a href="InventoryCheckOut.php">Check Out Inventory</a></li>
+			<li><a href="PurchaseOrder.php">File Purchase Order</a></li>
                         <li><a href="logout.php">Log out</a></li>
                     </ul>
                 </nav>
