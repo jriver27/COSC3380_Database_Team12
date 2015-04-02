@@ -30,5 +30,4 @@ else {
 	$_SESSION['error'] = 'wrong username or password';
 	header("Location: login.php");
 }
-
 ?>

@@ -46,7 +46,6 @@ session_start();
             </ul>
             <input type="submit" alt="login" name="login" value="Login" id="submit_btn">
         </form>
-
     </div>
 
     <div id="footer">
