@@ -28,9 +28,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <nav>
                     <ul class="nav nav-justified">
                         <li class="active">
-                            <a href="../index.php">
-                                Home
-                            </a>
+                            <a href="RestrictedIndex.php">Home</a>
                         </li>
                         <li class="active"><a href="createaccount.php">Create an Account</a></li>
                         <li> <a href="viewInventory.php">View Inventory</a></li>                      </li>
