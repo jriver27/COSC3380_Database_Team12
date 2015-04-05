@@ -1,11 +1,14 @@
 <?php
 include 'dbconnect.php';
 
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
+$firstName = trim($_POST['inputFirstName']);
+$lastName = trim($_POST['inputLastName']);
+$userName = trim($_POST['inputUserName']);
+$password = trim($_POST['inputPassword']);
+$position = trim($_POST['inputPosition']);
 
 
-$sql="SELECT * FROM $tbl_name WHERE username='$username' and password='$password'";
+$sql="SELECT username FROM users WHERE username='$username'";
 
 $result=mysqli_query($link, $sql);
 
@@ -13,7 +16,7 @@ $count=mysqli_num_rows($result);
 
 
 if($count==1){
-	$sql="SELECT * FROM $tbl_name WHERE username='$username' and password='$password'";
+	$sql="INSERT INTO dbteam12.users (Username, Password, First Name, Last Name, Position) VALUES ($username, $password, $firstName, $lastName, $position);";
 	$result=mysqli_query($link, $sql);
 	$count=mysqli_num_rows($result);
 	

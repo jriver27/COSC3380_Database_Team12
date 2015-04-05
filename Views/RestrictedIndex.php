@@ -26,7 +26,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     Medical Inventory Main
                 </h3>
                 <?php
-
                   include 'php/nav_byUserPosition.php';
                 ?>
             </div>

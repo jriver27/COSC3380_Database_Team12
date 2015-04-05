@@ -30,9 +30,9 @@ function test_input($data) {
 function get_manufacturer($manufacturer_num)
 {
 	//connect to the database
-	include "dbconnect.php";
+    include 'php/dbconnect.php';
 
-	// Check connection
+    // Check connection
 	if ($link->connect_error) {
     		die("Connection failed: " . $link->connect_error);
  	} 
@@ -56,7 +56,7 @@ function get_manufacturer($manufacturer_num)
 function create_purchase_order($SKU, $count, $purchaser)
 {
 	//connect to the database
-	include "dbconnect.php";
+    include 'php/dbconnect.php';
 
 	// Check connection
 	if ($link->connect_error) {

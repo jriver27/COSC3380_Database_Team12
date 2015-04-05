@@ -1,5 +1,5 @@
 <?php
-include 'dbconnect.php';
+include 'php/dbconnect.php';
 
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
