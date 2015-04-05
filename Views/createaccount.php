@@ -56,7 +56,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
                 while($obj = mysqli_fetch_array($result))
                 {
                     echo '<option value = "';
-                    echo print_r($obj['ID']);
+                    echo $obj['ID'];
                     echo '">';
                     echo print_r($obj['Position'],true);
                     echo '</option>';
