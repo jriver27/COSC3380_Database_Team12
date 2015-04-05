@@ -27,10 +27,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         ?>
     </div>
 </div>
-    <div id="tableContainer">
-        <table>
+    <div class="container-fluid">
+        <table class="table">
             <?php
-            include 'dbconnect.php';
+            include 'php/dbconnect.php';
 
             $sql="SELECT * FROM $tbl_name";
             $query = mysqli_query($link, $sql);

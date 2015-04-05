@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['position'] == 'admin'){
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
     echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
     header("../index.php");
@@ -27,30 +27,52 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['
         ?>
     </div>
 </div>
-    <div id="main">
-	<form action="insertaccount.php" method="post" name="loginform">
-            <input type="hidden" name="action" value="register">
-            <ul class="nobullet">
-                <li>
-                    <label for="username"> user name</label>
-                    <input type="text" id="username" name="username" value="">
-                    <span id="usermessage"></span>
-                </li>
-                <li>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" value="">
-                    <span id="passwordmessage"></span>
-                </li>
-            </ul>
-            <input type="submit" alt="login" name="login" value="Login" id="submit_btn">
-    </form>
+    <div class="container">
+        <form action="php/insertAccount.php" method ="post" class="dropdown">
+            <div class="form-group">
+            <label for="inputFirstName">First Name</label>
+            <input class="form-control" type="text"  placeholder="First Name" name="inputFirstName" id="inputFirstName">
+            </div>
+            <div class="form-group">
+                <label for="inputLastName">Last Name</label>
+                <input  class="form-control" placeholder="Last Name" name="inputLastName" id="inputLastName" >
+            </div>
+            <div class="form-group">
+                <label for="inputUserName">User Name</label>
+                <input  class="form-control" placeholder="User Name" name="inputUserName" id="inputUserName" >
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="inputPassword" id="inputPassword" >
+            </div>
+            <div class="form-group">
+                <label for="inputPosition">Position</label>
+                <select class="form-control" name="inputPosition" id="inputPosition" >
+                <?php
+                include 'php/dbconnect.php';
+
+                $sql="SELECT ID,Position  FROM user_position";
+                $result = mysqli_query($link, $sql);
+                while($obj = mysqli_fetch_array($result))
+                {
+                    echo '<option value = "';
+                    echo print_r($obj['ID']);
+                    echo '">';
+                    echo print_r($obj['Position'],true);
+                    echo '</option>';
+                }
+                ?>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </div>
 
-    <div id="footer">
-        <span> Please Contact Us anytime.</span>
-        <a href="RestrictedIndex.php">Members Area</a>
-        <a href="logout.php">Logout</a>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
+        </div>
+    </footer>
 </body>
 
 </html>
