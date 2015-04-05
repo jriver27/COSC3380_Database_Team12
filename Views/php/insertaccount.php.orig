@@ -13,7 +13,13 @@ $result=mysqli_query($link, $sql);
 $count=mysqli_num_rows($result);
 
 if($count==0){
+<<<<<<< HEAD
     $sql="INSERT INTO users (Username, Password, FirstName, LastName, Position) VALUES ('$userName', '$password', '$firstName', '$lastName','$position');";
+=======
+    include 'dbconnect.php';
+//	$sql="INSERT INTO 'dbteam12'.'users' ('Username', 'Password', 'First Name', 'Last Name', 'Position') VALUES ($userName,$password,$firstName,$lastName,$position);";
+    $sql="INSERT INTO users (Username, Password, First Name, Last Name, Position) VALUES ('$userName', '$password', '$firstName', '$lastName','$position');";
+>>>>>>> origin/master
     if ($link->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('New User Created!!!');</script>";
         header("Location: ../createAccount.php");

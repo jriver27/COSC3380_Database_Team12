@@ -1,5 +1,5 @@
 <?php
-include 'php/dbconnect.php';
+include 'dbconnect.php';
 
 $username = trim($_POST['username']);
 $password = trim($_POST['password']);
@@ -15,13 +15,13 @@ if($count==1){
     $_SESSION['username'] = $obj->Username;
     $_SESSION['position'] = $obj->Position;
 
-    $website = "RestrictedIndex.php";
+    $website = "../RestrictedIndex.php";
 	header("Location:$website ");
 }
 else {
 	session_start();
 	$_SESSION['error'] = 'wrong username or password';
-	header("Location: ../index.php");
+	header("Location: ../../index.php");
 }
 mysqli_free_result($result);
 ?>
