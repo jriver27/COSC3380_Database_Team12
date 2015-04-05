@@ -53,6 +53,7 @@ elseif($var== 4){
             <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
             <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
              <li><a href="createPO.php">Create Purchase Order</a></li>
+             <li><a href="adminDashboard.php">View Dashboard</a></li>
             <li><a href="logout.php">Log out</a></li>
         </ul>
     </nav>
