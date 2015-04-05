@@ -19,7 +19,7 @@ session_start();
                 <a class="navbar-brand" href="#">Medical Inventory</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" action ="Views/verifylogin.php" method="post" name="loginform">
+                    <form class="navbar-form navbar-right" action ="Views/php/verifylogin.php" method="post" name="loginform">
                         <div class="form-group">
                         <input class="form-control" type="text" placeholder="Username"  name="username" id="username">
                         </div>
