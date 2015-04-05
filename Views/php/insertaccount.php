@@ -13,8 +13,6 @@ $result=mysqli_query($link, $sql);
 $count=mysqli_num_rows($result);
 
 if($count==0){
-    include 'dbconnect.php';
-//	$sql="INSERT INTO 'dbteam12'.'users' ('Username', 'Password', 'First Name', 'Last Name', 'Position') VALUES ($userName,$password,$firstName,$lastName,$position);";
     $sql="INSERT INTO users (Username, Password, FirstName, LastName, Position) VALUES ('$userName', '$password', '$firstName', '$lastName','$position');";
     if ($link->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('New User Created!!!');</script>";
@@ -28,6 +26,5 @@ if($count==0){
 else {
     echo "<script type='text/javascript'>alert('Error Count != 0!!!!');</script>";
     header("Location: ../createAccount.php");
-    echo "<script type='text/javascript'>alert('Error Count != 0!!!!');</script>";
 }
 ?>
