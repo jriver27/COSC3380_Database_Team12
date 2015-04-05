@@ -71,6 +71,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
             <p> Other Possible metrics here.</p>
         </div>
 
+        <div>
+            <p> Download as cvs</p>
+        </div>
+
     </div>
 
     <footer class="footer">

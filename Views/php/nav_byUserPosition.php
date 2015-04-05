@@ -35,8 +35,8 @@ echo'<div class="container-fluid">
         <ul class="nav nav-justified">
             <li class="active"> <a href="RestrictedIndex.php">Home</a>
             <li> <a href="viewInventory.php">View Inventory</a></li>
-            <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
-            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
+
+
              <li><a href="createPO.php">Create Purchase Order</a></li>
              <li><a href="adminDashboard.php">View Dashboard</a></li>
             <li><a href="logout.php">Log out</a></li>
@@ -51,8 +51,8 @@ elseif($var== 4){
             <li class="active"> <a href="RestrictedIndex.php">Home</a>
             <li class="active"><a href="createAccount.php">Create an Account</a></li>
             <li> <a href="viewInventory.php">View Inventory</a></li>
-            <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
-            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
+
+
              <li><a href="createPO.php">Create Purchase Order</a></li>
              <li><a href="adminDashboard.php">View Dashboard</a></li>
             <li><a href="logout.php">Log out</a></li>
