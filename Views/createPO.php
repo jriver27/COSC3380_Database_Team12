@@ -96,48 +96,44 @@ function create_purchase_order($SKU, $count, $purchaser)
     </div>
 </div>
 
-<div id="main">
+<div class = "container">
+    <p>Select Item</p>
+    <form method="post">
+    <p>
+    <select name="item">
 
+    <?php
+        //connect to the database
+        include "dbconnect.php";
 
-<p>Select Item</p>
+    // Check connection
+    if ($link->connect_error) {
+        die("Connection failed: " . $link->connect_error);
+     }
 
+    $sql = "SELECT DISTINCT SKU, Description, Manufacturer FROM item";
+    $result = $link->query($sql);
 
-<form method="post">
-<p>
-<select name="item">
-
-<?php
-	//connect to the database
-	include "dbconnect.php";
-
-// Check connection
-if ($link->connect_error) {
-    die("Connection failed: " . $link->connect_error);
- } 
-
-$sql = "SELECT DISTINCT SKU, Description, Manufacturer FROM item";
-$result = $link->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    	echo "<option value=".$row["SKU"].">". $row["Description"] . '</option>'."\n";
-	$manufacturer[$row["SKU"]] = $row["Manufacturer"];
-	$description[$row["SKU"]] =$row["Description"];
-	}
-} else {
-    echo "No items in the database";
-}
-
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "<option value=".$row["SKU"].">". $row["Description"] . '</option>'."\n";
+        $manufacturer[$row["SKU"]] = $row["Manufacturer"];
+        $description[$row["SKU"]] =$row["Description"];
+        }
+    } else {
+        echo "No items in the database";
+    }
  ?> 
 
 </select>
 </p>
- 
-<p>Item Count:</p>
-<p><input type="number" name="ItemCount" min="1"></p>
+     <div>
+        <p>Item Count:</p>
+        <p><input type="number" name="ItemCount" min="1"></p>
 
-<p><INPUT TYPE = "Submit" Name = "Submit" VALUE = "Submit"></p>
+        <p><INPUT TYPE = "Submit" Name = "Submit" VALUE = "Submit"></p>
+    </div>
 </form>
 
 <?php
@@ -165,7 +161,6 @@ if(isset($_POST['Submit']))
 ?>
 
 </div>
-
 <footer class="footer">
     <div class="container">
         <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
