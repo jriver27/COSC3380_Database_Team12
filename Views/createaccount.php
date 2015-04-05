@@ -28,41 +28,41 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
     </div>
 </div>
     <div class="container">
-        <form action="php/insertAccount.php" >
+        <form action="php/insertAccount.php" method ="post" class="dropdown">
             <div class="form-group">
-                <label for="inputFirstName">First Name</label>
-                <input type="firstName" class="form-control" id="inputFirstName" placeholder="First Name">
+            <label for="inputFirstName">First Name</label>
+            <input class="form-control" type="text"  placeholder="First Name" name="inputFirstName" id="inputFirstName">
             </div>
             <div class="form-group">
                 <label for="inputLastName">Last Name</label>
-                <input type="lastName" class="form-control" id="inputLastName" placeholder="Last Name">
+                <input  class="form-control" placeholder="Last Name" name="inputLastName" id="inputLastName" >
             </div>
             <div class="form-group">
                 <label for="inputUserName">User Name</label>
-                <input type="userame" class="form-control" id="inputUserName" placeholder="User Name">
+                <input  class="form-control" placeholder="User Name" name="inputUserName" id="inputUserName" >
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" name="inputPassword" id="inputPassword" >
             </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Position <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <?php
-                    include 'php/dbconnect.php';
+            <div class="form-group">
+                <label for="inputPosition">Position</label>
+                <select class="form-control" name="inputPosition" id="inputPosition" >
+                <?php
+                include 'php/dbconnect.php';
 
-                    $sql="SELECT ID FROM user_position";
-                    $query = mysqli_query($link, $sql);
-                    while($obj = mysqli_fetch_array($query))
-                    {
-                        echo '<li>';
-                        echo $obj['ID'];
-                        echo '</li>';
-                    }
-                    ?>
-                </ul>;
+                $sql="SELECT ID,Position  FROM user_position";
+                $result = mysqli_query($link, $sql);
+                while($obj = mysqli_fetch_array($result))
+                {
+                    echo '<option value = "';
+                    echo print_r($obj['ID']);
+                    echo '">';
+                    echo print_r($obj['Position'],true);
+                    echo '</option>';
+                }
+                ?>
+                </select>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
