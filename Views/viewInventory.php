@@ -4,57 +4,55 @@ session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 
 ?>
 <html>
-    <head lang="en">
-        <title>Inventory</title>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="masthead">
-                <h3 class="text-muted">
-                    View Inventory
-                </h3>
-                <nav>
-                    <ul class="nav nav-justified">
-                        <li class="active"> <a href="RestrictedIndex.php">Home</a>
-                        <li class="active"><a href="createaccount.php">Create an Account</a></li>
-                        <li> <a href="viewInventory.php">View Inventory</a></li>                      </li>
-                        <li><a href= "InventoryCheckIn.php">Check In Inventory</a></li>
-                        <li><a href="InventoryCheckOut.php">Check Out Inventory</a></li>
-                        <li><a href="PurchaseOrder.php">Create Purchase Order</a></li>
-                        <li><a href="logout.php">Log out</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div id="tableContainer">
-            <table>
-                <?php
-                include 'dbconnect.php';
 
-                $sql="SELECT * FROM $tbl_name";
-                $query = mysqli_query($link, $sql);
+<head lang="en">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
+</head>
 
-                while($row = mysqli_fetch_array($query))
-                {
-                    echo '<tr>';
-                    echo "<tr><td>".($row['Username'])."</td></tr>";
-                    echo '</tr>';
-                }
+<body>
+    <div class="container">
+        <div class="masthead">
+            <h3 class="text-muted">
+                View Inventory
+            </h3>
+			<?php
+
+                  include 'php/nav_byUserPosition.php';
                 ?>
-            </table>
-            <table><span > THIS IS WHERE WE WILL HAVE OUR INVENTORY</span> </table>
+           
         </div>
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
-            </div>
-        </footer>
-    </body>
+		<div id="tableContainer">
+			<table class="table">
+			<tr><td>SKU</td><td>Description</td><td>Manufacturer</td><td>Stock</td></tr>
+			<?php
+			include 'dbconnect.php';
+			$sql="SELECT * from item i LEFT JOIN item_description id ON i.SKU=id.SKU LEFT JOIN item_manufacturer im ON i.SKU=im.ID";
+            $query = mysqli_query($link, $sql);
+				
+			while($row = mysqli_fetch_array($query))
+			{
+				if($row['Stock_Count'] == null)
+					$row['Stock_Count'] = 1;
+				echo '<tr>';
+                echo "<td>".($row['SKU'])."</td>"."<td>".($row['Description'])."</td>"."<td>".($row['Manufacturer'])."</td>"."<td>".($row['Stock_Count'])."</td>";
+                echo '</tr>';		
+			}
+			?>
+			</table>
+		</div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Please Contact Us any time. <a href="logout.php">Logout</a> </p>
+        </div>
+    </footer>
+</body>
 </html>
