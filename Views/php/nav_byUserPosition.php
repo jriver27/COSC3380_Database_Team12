@@ -11,7 +11,7 @@ echo '<div class="container-fluid">
             <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
             <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
 
-            <li><a href="logout.php">Log out</a></li>
+            <li><a href="php/logout.php">Log out</a></li>
         </ul>
     </nav>
 </div>';
@@ -24,7 +24,7 @@ echo '<div class="container-fluid">
             <li> <a href="viewInventory.php">View Inventory</a></li>
             <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
             <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
-            <li><a href="logout.php">Log out</a></li>
+            <li><a href="php/logout.php">Log out</a></li>
         </ul>
     </nav>
 </div>';
@@ -39,7 +39,7 @@ echo'<div class="container-fluid">
 
              <li><a href="createPO.php">Create Purchase Order</a></li>
              <li><a href="adminDashboard.php">View Dashboard</a></li>
-            <li><a href="logout.php">Log out</a></li>
+            <li><a href="php/logout.php">Log out</a></li>
         </ul>
     </nav>
 </div>';
@@ -55,7 +55,7 @@ elseif($var== 4){
 
              <li><a href="createPO.php">Create Purchase Order</a></li>
              <li><a href="adminDashboard.php">View Dashboard</a></li>
-            <li><a href="logout.php">Log out</a></li>
+            <li><a href="php/logout.php">Log out</a></li>
         </ul>
     </nav>
 </div>';

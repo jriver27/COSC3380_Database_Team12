@@ -1,9 +1,0 @@
-Pages Needed  - Team Member
-------------------------------
-
-1. Login
-2. Inventory Checkin
-3. Inventory Checkout
-4. View Inventory
-5. Request Products
-6. View User History

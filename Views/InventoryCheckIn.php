@@ -9,43 +9,46 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && (int)$_SESS
 
 ?>
 <html lang="en">
-    <head >
-        <title>Check In Inventory</title>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="masthead">
-                <h3 class="text-muted">
+<head >
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../../favicon.ico" rel="icon">
+    <title>Check In Inventory</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
+</head>
+<body>
+    <div class="page-header">
+        <div class="navbar-default">
+            <div class="navbar-header"></div>
+            <h3 class="h3">
                     Inventory Check In
-                </h3>
-                <?php
-                include 'php/nav_byUserPosition.php';
-                ?>
-            </div>
+            </h3>
+            <?php
+            include 'php/nav_byUserPosition.php';
+            ?>
         </div>
-        <div class="container-fluid">
-            <table class="table">
-                <?php
-                include 'php/dbconnect.php';
+    </div>
+    <div class="container-fluid">
+        <table class="table">
+            <?php
+            include 'php/dbconnect.php';
 
-                $sql="SELECT * FROM $tbl_name";
-                $query = mysqli_query($link, $sql);
+            $sql="SELECT * FROM $tbl_name";
+            $query = mysqli_query($link, $sql);
 
-                while($row = mysqli_fetch_array($query))
-                {
-                    echo '<tr>';
-                        echo "<td>".($row['Username'])."</td>";
-                    echo '</tr>';
-                }
-                ?>
-            </table>
-        </div>
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
-            </div>
-        </footer>
-    </body>
+            while($row = mysqli_fetch_array($query))
+            {
+                echo '<tr>';
+                    echo "<td>".($row['Username'])."</td>";
+                echo '</tr>';
+            }
+            ?>
+        </table>
+    </div>
+    <?php
+    include 'php/footer.php';
+    ?>
+</body>
 </html>

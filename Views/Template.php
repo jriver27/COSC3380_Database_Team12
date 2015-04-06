@@ -28,11 +28,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         ?>
     </div>
 </div>
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
-    </div>
-</footer>
+<?php
+include 'php/footer.php';
+?>
 </body>
 
 </html>
