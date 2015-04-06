@@ -2,6 +2,10 @@
 <html>
 
 <head lang="en">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../../favicon.ico" rel="icon">
     <title>Contact US</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
@@ -23,11 +27,9 @@
         </ul>
     </div>
 </div>
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
-    </div>
-</footer>
+<?php
+include 'php/footer.php';
+?>
 </body>
 
 </html>

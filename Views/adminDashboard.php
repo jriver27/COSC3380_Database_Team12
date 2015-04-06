@@ -18,17 +18,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
 </head>
 
 <body>
-    <div class="container">
-        <div class="masthead">
-            <h3 class="text-muted">
-                Template
+    <div class="page-header">
+        <div class="navbar-default">
+            <div class="navbar-header"></div>
+            <h3 class="h3">
+                Dashboard
             </h3>
             <?php
             include 'php/nav_byUserPosition.php';
             ?>
         </div>
     </div>
-
     <div class="container">
 
         <div class="container" style="border: double">
@@ -77,11 +77,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
 
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">Please Contact Us anytime. <a href="logout.php">Logout</a> </p>
-        </div>
-    </footer>
+    <?php
+    include 'php/footer.php';
+    ?>
 </body>
 
 </html>
