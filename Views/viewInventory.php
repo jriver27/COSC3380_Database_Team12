@@ -33,7 +33,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <tr><td>SKU</td><td>Description</td><td>Manufacturer</td><td>Stock</td></tr>
     <?php
         include 'php/dbconnect.php';
-    $sql="SELECT * from item i LEFT JOIN item_description id ON i.SKU=id.SKU LEFT JOIN item_manufacturer im ON i.SKU=im.ID";
+    $sql="SELECT * from item i LEFT JOIN item_manufacturer im ON i.Manufacturer=im.ID";
     $query = mysqli_query($link, $sql);
 
     while($row = mysqli_fetch_array($query))
