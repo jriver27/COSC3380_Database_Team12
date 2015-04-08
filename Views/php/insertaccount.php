@@ -7,24 +7,32 @@ $userName = trim($_POST['inputUserName']);
 $password = trim($_POST['inputPassword']);
 $position = (int)trim($_POST['inputPosition']);
 
-
-$sql="SELECT username FROM users WHERE username='$username'";
+$sql="SELECT username FROM users WHERE username='$userName'";
 $result=mysqli_query($link, $sql);
 $count=mysqli_num_rows($result);
 
 if($count==0){
     $sql="INSERT INTO users (Username, Password, FirstName, LastName, Position) VALUES ('$userName', '$password', '$firstName', '$lastName','$position');";
     if ($link->query($sql) === TRUE) {
-        echo "<script type='text/javascript'>alert('New User Created!!!');</script>";
-        header("Location: ../createAccount.php");
+        echo '<script>
+        alert("New User Created!!")
+        window.location.href="../createAccount.php"
+        </script>
+       <div class="media-middle">Error: " . $sql . "<br>" . $link->error </div>';
     } else {
-        echo "Error: " . $sql . "<br>" . $link->error;
-        echo "<script type='text/javascript'>alert('Error User not Created!!!');</script>";
-        header("Location: ../createAccount.php");
+        echo "<script>
+        alert('Error User not Created !!')
+        window.location.href='../createAccount.php'
+        </script>
+       <div class='media-middle'>Error: ' . $sql . '<br>' . $link->error </div>
+        ";
     }
 }
-else {
-    echo "<script type='text/javascript'>alert('Error Count != 0!!!!');</script>";
-    header("Location: ../createAccount.php");
+else if($count>=1){
+    echo '<script>
+        alert("Error Username is in use!!")
+        window.location.href="../createAccount.php"
+        </script>
+       <div class="media-middle">Error: " . $sql . "<br>" . $link->error </div>';
 }
 ?>

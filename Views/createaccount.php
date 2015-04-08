@@ -32,7 +32,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
     </div>
 </div>
     <div class="container">
-        <form action="php/insertAccount.php" method ="post" class="dropdown">
+        <form action="php/insertAccount.php" method ="post" class="dropdown" onsubmit="return toSubmit();">
             <div class="form-group">
             <label for="inputFirstName">First Name</label>
             <input class="form-control" type="text"  placeholder="First Name" name="inputFirstName" id="inputFirstName">
@@ -70,11 +70,52 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
+        <div class="pull-right">
+            <div class="btn-group">
+                <div class="btn" style="border: groove">
+                    <a href="removeAccount.php">Flag Account for removal</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 <?php
 include 'php/footer.php';
 ?>
 </body>
+<script type ="text/javascript">
+    var isReady;
 
+    function toSubmit(){
+        checkInput();
+        if(isReady) {
+            return confirm("Please Confirm Your Input!!");
+        }
+        else{
+            alert("Please Complete Form");
+            return false;
+        }
+    }
+
+    function checkInput(){
+        var fname =document.getElementById('inputFirstName').value.length;
+        var lname =document.getElementById('inputLastName').value.length;
+        var uname =document.getElementById('inputUserName').value.length;
+        var pass =document.getElementById('inputPassword').value.length;
+
+        if(fname == 0){
+            isReady = false;
+        }else if(lname == 0){
+            isReady = false;
+        }else if(uname == 0){
+            isReady = false;
+        }else if(pass == 0){
+            isReady = false;
+        }
+        else {
+            isReady = true;
+        }
+    }
+</script>
 </html>
