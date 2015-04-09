@@ -1,62 +1,32 @@
 <?php
+// positions
+//1=Nurse
+//2=Doctor
+//3=Medical_Admin
+//4=Admin
+//5=SuperAdmin
 $var = $_SESSION['position'];
 
-if($var == 1)
-{
-echo '<div class="container-fluid">
-    <nav>
-        <ul class="nav nav-justified">
-            <li class="active"> <a href="RestrictedIndex.php">Home</a>
-            <li> <a href="viewInventory.php">View Inventory</a></li>
-            <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
-            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
+$openDiv = '<div class="container-fluid"><nav><ul class="nav nav-justified">';
+$closeDiv = '<li><a href="php/logout.php">Log out</a></li></ul></nav></div>';
 
-            <li><a href="php/logout.php">Log out</a></li>
-        </ul>
-    </nav>
-</div>';
-}
-elseif($var == 2){
-echo '<div class="container-fluid">
-    <nav>
-        <ul class="nav nav-justified">
-            <li class="active"> <a href="RestrictedIndex.php">Home</a>
-            <li> <a href="viewInventory.php">View Inventory</a></li>
+$lowCredentials = '<li class="active"> <a href="restrictedIndex.php">Home</a>
+            <li><a href="viewInventory.php">View Inventory</a></li>
             <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
-            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
-            <li><a href="php/logout.php">Log out</a></li>
-        </ul>
-    </nav>
-</div>';
+            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>';
+
+$highCredentials = '<li><a href="createPO.php">Create Purchase Order</a></li>
+             <li><a href="adminDashboard.php">View Dashboard</a></li>';
+
+$adminCredentials = '<li class="active"><a href="createAccount.php">Account Options</a></li>';
+
+if($var == 1 || $var == 2)//
+{
+echo $openDiv.$lowCredentials.$closeDiv;
 }
 elseif($var == 3){
-echo'<div class="container-fluid">
-    <nav>
-        <ul class="nav nav-justified">
-            <li class="active"> <a href="RestrictedIndex.php">Home</a>
-            <li> <a href="viewInventory.php">View Inventory</a></li>
-
-
-             <li><a href="createPO.php">Create Purchase Order</a></li>
-             <li><a href="adminDashboard.php">View Dashboard</a></li>
-            <li><a href="php/logout.php">Log out</a></li>
-        </ul>
-    </nav>
-</div>';
+echo $openDiv.$lowCredentials.$highCredentials.$closeDiv;
 }
 elseif($var== 4){
-    echo'<div class="container-fluid">
-    <nav>
-        <ul class="nav nav-justified">
-            <li class="active"> <a href="RestrictedIndex.php">Home</a>
-            <li class="active"><a href="createAccount.php">Create an Account</a></li>
-            <li> <a href="viewInventory.php">View Inventory</a></li>
-
-
-             <li><a href="createPO.php">Create Purchase Order</a></li>
-             <li><a href="adminDashboard.php">View Dashboard</a></li>
-            <li><a href="php/logout.php">Log out</a></li>
-        </ul>
-    </nav>
-</div>';
+    echo $openDiv.$lowCredentials.$highCredentials.$adminCredentials.$closeDiv;
 }
