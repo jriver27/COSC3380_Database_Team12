@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true  &&  (int)$_SESSION['position'] >= 2) {
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true  &&  (int)$_SESSION['position'] > 2) {
      echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
      header("Location: ../index.php");
@@ -9,70 +9,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true  &&  (int)$_SE
 ?>
 
 <?php
-// define variables and set to empty values
-$username = $SKU = $description = $manufacturer = $count = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   //$username = test_input($_POST["name"]);
-   $SKU = test_input($_POST["item"]);
-   //$description = test_input($_POST["website"]);
-   //$manufacturer = test_input($_POST["comment"]);
-   $count = test_input($_POST["ItemCount"]);
-}
-
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-
-function get_manufacturer($manufacturer_num)
-{
-	//connect to the database
-    include 'php/dbconnect.php';
-
-    // Check connection
-	if ($link->connect_error) {
-    		die("Connection failed: " . $link->connect_error);
- 	} 
-
-	$sql = "SELECT Manufacturer FROM item_manufacturer WHERE id = '$manufacturer_num'";
-	$result = $link->query($sql);
-
-	if ($result->num_rows > 0) {
-    		// use the first row
-   		$row = $result->fetch_assoc();
-		$manufacturer_name = $row["Manufacturer"];
-		
-	}
-	else {
-    		$manufacturer_name = "Manufacturer Not Found";
-	}
-	
-	return $manufacturer_name;
-}
-
-function create_purchase_order($SKU, $count, $purchaser)
-{
-	//connect to the database
-    include 'php/dbconnect.php';
-
-	// Check connection
-	if ($link->connect_error) {
-    		die("Connection failed: " . $link->connect_error);
- 	} 
-
-	$timestamp = time();
-
-	$sql = "INSERT INTO purchase_order_log (SKU, DATETIME, COUNT, PURCHASER) VALUES ('$SKU','$timestamp','$count','$purchaser')";
-	if ($link->query($sql) === TRUE) {
-   		echo "New Purchase Order created successfully";
-	} else {
-    		echo "Error: " . $sql . "<br>" . $link->error;
-	}
-}
-
+    include 'php/createPO_Post.php'
 ?>
 
 
@@ -101,43 +38,22 @@ function create_purchase_order($SKU, $count, $purchaser)
 </div>
 
 <div class = "container">
-    <p>Select Item</p>
-    <form method="post">
-    <p>
-    <select name="item">
-
-    <?php
-        //connect to the database
-        include "dbconnect.php";
-
-    // Check connection
-    if ($link->connect_error) {
-        die("Connection failed: " . $link->connect_error);
-     }
-
-    $sql = "SELECT DISTINCT SKU, Description, Manufacturer FROM item";
-    $result = $link->query($sql);
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<option value=".$row["SKU"].">". $row["Description"] . '</option>'."\n";
-        $manufacturer[$row["SKU"]] = $row["Manufacturer"];
-        $description[$row["SKU"]] =$row["Description"];
-        }
-    } else {
-        echo "No items in the database";
-    }
- ?> 
-
-</select>
-</p>
-     <div>
-        <p>Item Count:</p>
-        <p><input type="number" name="ItemCount" min="1"></p>
-
-        <p><INPUT TYPE = "Submit" Name = "Submit" VALUE = "Submit"></p>
-    </div>
+    <form class="form-group" method="post">
+        <div><label for="item"> Select Item:</label></div>
+        <div class="dropdown">
+            <select name="item" id="item">
+                <?php
+                    include "php/getAllItemsInDropDownMenu.php";
+                ?>
+        </select>
+        </div>
+         <div class="input-group">
+             <div><label for="ItemCount"> Item Count:</label></div>
+             <input class="input-group-sm" type="number" name="ItemCount" id="ItemCount" min="1">
+         </div>
+        <div class="btn">
+        <INPUT TYPE = "Submit" Name = "Submit" VALUE = "Submit">
+        </div>
 </form>
 
 <?php
