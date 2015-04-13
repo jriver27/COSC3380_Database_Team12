@@ -38,7 +38,7 @@
                 <select multiple class="form-control" id="itemrequested" name="itemrequested">
                     <?php
                          include 'php/dbconnect.php';
-                        $sql="SELECT DISTINCT id.Description from item i JOIN item_description id ON i.SKU=id.SKU";
+                        $sql="SELECT DISTINCT SKU, Serial_number, Description from item ORDER BY Description";
                         $query = mysqli_query($link, $sql);
 
                         while($row = mysqli_fetch_array($query))
