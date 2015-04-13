@@ -1,0 +1,40 @@
+COSC_3380 Medical Inventory
+
+-----------------------------
+
+User Options:
+
+Nurse:
+Check Out Consumables.
+Check Out Non-Consumables.
+
+Check in Non-Consumables.
+
+Receives Purchase Orders.
+-------------------------
+
+Doctors:
+Check Out Consumables.
+Check Out Non-Consumables.
+
+Check in Non-Consumables.
+
+Receives Purchase Orders.
+
+-------------------------
+Medical_Admin:
+Creates Purchase Orders.
+
+Receives Purchase Orders.
+-------------------------
+
+Admin:
+Creates Users.(cannot create admins)
+
+Flags Users for Removal.
+-------------------------
+
+Super_Admin:
+Creates Users. (Able to create Admins)
+
+Flags Users for Removal.
