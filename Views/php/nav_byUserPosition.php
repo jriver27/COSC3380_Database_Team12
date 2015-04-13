@@ -27,6 +27,6 @@ echo $openDiv.$lowCredentials.$closeDiv;
 elseif($var == 3){
 echo $openDiv.$lowCredentials.$highCredentials.$closeDiv;
 }
-elseif($var== 4){
+elseif($var>= 4){
     echo $openDiv.$lowCredentials.$highCredentials.$adminCredentials.$closeDiv;
 }

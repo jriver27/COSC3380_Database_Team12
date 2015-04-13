@@ -59,11 +59,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
                 $result = mysqli_query($link, $sql);
                 while($obj = mysqli_fetch_array($result))
                 {
+                    if((int)$obj['ID'] < (int)$_SESSION['position']){
                     echo '<option value = "';
                     echo $obj['ID'];
                     echo '">';
                     echo print_r($obj['Position'],true);
                     echo '</option>';
+                    }
                 }
                 ?>
                 </select>
