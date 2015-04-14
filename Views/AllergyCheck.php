@@ -38,7 +38,7 @@
 </div>
 <form action="" method="post" name="loginform">
     <div class="container-fluid">
-        <label for="itemrequested">Select Item</label>
+        <label for="itemrequested">Lookup By Item Name</label><br>
         <?php
         include 'php/dbconnect.php';
         $sql="SELECT DISTINCT SKU, Description FROM item ORDER BY Description";

@@ -33,7 +33,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <tr><td>SKU</td><td>Description</td><td>Manufacturer</td><td>Stock</td></tr>
     <?php
         include 'php/dbconnect.php';
-    $sql="SELECT SKU, Description, i.manufacturer As Manufacturer, SUM(IFNULL(Stock_Count, 1)) Stock_Count
+    $sql="SELECT SKU, Description, im.manufacturer As Manufacturer, SUM(IFNULL(Stock_Count, 1)) Stock_Count
           from item i LEFT JOIN item_manufacturer im ON i.Manufacturer=im.ID
           GROUP BY SKU, Description, i.manufacturer";
     $query = mysqli_query($link, $sql);
