@@ -55,6 +55,23 @@
         ?>
 
         <input type="submit" alt="lookup" name="lookup" value="Look Up" id="submit_btn">
+        <p><label for="allergyList">Search by Allergies:</label><br>
+        <?php
+        //$sql = "SHOW COLUMNS FROM allergy_lookup WHERE Field NOT LIKE 'SKU'";
+        $sql = "SELECT COLUMN_NAME
+                FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE table_name = 'allergy_lookup'
+                  AND column_name NOT LIKE 'SKU'
+                ORDER BY column_name";
+        $query = mysqli_query($link, $sql);
+
+        while( $row = mysqli_fetch_array($query) ) {
+            $output .= "<input type='checkbox' name='allergies[]' value='" . $row['COLUMN_NAME'] . "'> " . $row['COLUMN_NAME'] . "<br />";
+            echo $output;
+        }
+        ?>
+            <br><input type="submit" alt="lookup" name="lookup" value="Match Allergies" id="submit_btn">
+        </p>
     </div>
 </form>
 <?php
