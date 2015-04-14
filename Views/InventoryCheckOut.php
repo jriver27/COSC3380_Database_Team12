@@ -38,7 +38,7 @@
                 <select multiple class="form-control" id="itemrequested" name="itemrequested">
                     <?php
                          include 'php/dbconnect.php';
-                        $sql="SELECT DISTINCT id.Description from item i JOIN item_description id ON i.SKU=id.SKU";
+                        $sql="SELECT DISTINCT SKU, Serial_number, Description from item ORDER BY Description";
                         $query = mysqli_query($link, $sql);
 
                         while($row = mysqli_fetch_array($query))
@@ -51,11 +51,11 @@
                 </select>
             </table>
             <li>
-                <label for="amountrequested">Amount</label>
+                <label for="amountrequested">Quantity: </label>
                 <input type="value" id="amountrequested" name="amountrequested" value="">
                 <span id="passwordmessage"></span>
             </li>
-        <input type="submit" alt="login" name="login" value="Login" id="submit_btn">
+        <input type="submit" alt="Check Out" name="checkOut" value="Check Out" id="submit_btn">
         </div>
     </form>
     <?php

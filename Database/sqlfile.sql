@@ -195,3 +195,20 @@ CREATE TABLE IF NOT EXISTS `rooms` (
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+---------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS 'allergy_lookup'
+(
+   `SKU`             INT(10) NOT NULL,
+   `LATEX`           BOOLEAN,
+   `PEANUTS`         BOOLEAN,
+   `ASPIRIN`         BOOLEAN,
+   `PENECILLIN`      BOOLEAN,
+   `INSULIN`         BOOLEAN,
+   PRIMARY KEY(`SKU`)
+);
+
+ALTER TABLE dbteam12.allergy_lookup
+  ADD CONSTRAINT `FK_allergy_lookup_1`
+  FOREIGN KEY (`SKU`)
+  REFERENCES dbteam12.item(`SKU`)

@@ -13,7 +13,8 @@ $closeDiv = '<li><a href="php/logout.php">Log out</a></li></ul></nav></div>';
 $lowCredentials = '<li class="active"> <a href="restrictedIndex.php">Home</a>
             <li><a href="viewInventory.php">View Inventory</a></li>
             <li><a href= "inventoryCheckIn.php">Check In Inventory</a></li>
-            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>';
+            <li><a href="inventoryCheckOut.php">Check Out Inventory</a></li>
+            <li><a href="allergyCheck.php">Allergy Lookup</a></li>';
 
 $highCredentials = '<li><a href="createPO.php">Create Purchase Order</a></li>
              <li><a href="adminDashboard.php">View Dashboard</a></li>';
