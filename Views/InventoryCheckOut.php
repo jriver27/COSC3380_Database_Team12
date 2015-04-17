@@ -65,12 +65,12 @@
 					<select class="form-control" id="Consumables" name="Consumables" style="width: 400px;" size="8">
 						<?php
 							include 'php/dbconnect.php';
-							$sql="SELECT i.Serial_number, id.Description, im.Manufacturer from item i LEFT JOIN item_description id ON i.SKU=id.SKU LEFT JOIN item_manufacturer im ON i.SKU=im.ID WHERE Stock_Count >= 1";
+							$sql="SELECT i.SKU, id.Description, im.Manufacturer from item i LEFT JOIN item_description id ON i.SKU=id.SKU LEFT JOIN item_manufacturer im ON i.SKU=im.ID WHERE Stock_Count >= 1";
 							$query = mysqli_query($link, $sql);
 							
 							while($row = mysqli_fetch_array($query))
 							{
-								echo "<option value='".($row['Serial_number'])."'>";
+								echo "<option value='".($row['SKU'])."'>";
 								echo $row["Description"] . ' ' . $row["Manufacturer"];
 								echo "</option>";
 							}
@@ -109,7 +109,20 @@
 					
 					if(isset($_POST['submit2']))
 					{
+						include 'php/dbconnect.php';
 						
+						
+						
+						$roomnum = (int)$_POST['roomnum'];
+						$sku = (int)$_POST['Consumables'];
+						$count = (int)$_POST['amountrequested'];
+						$timestamp = time();
+						$user = $_SESSION['username'];
+						
+						echo $user . ' has succesfully checked out item with serial number ' . $var . ' on ' . date("Y-m-d",$timestamp) . ' to room ' . $roomnum;
+						
+						$sql="INSERT INTO transaction_log(SKU, User_ID, Count, Room_Number) VALUES ($sku, '$user', $count, $roomnum);";
+						$link->query($sql);
 					}	
 				?>
 			</div>
