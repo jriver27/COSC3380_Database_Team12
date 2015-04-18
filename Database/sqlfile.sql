@@ -1,214 +1,126 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 02, 2015 at 08:16 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `dbteam12`
+-- MySQL 5.6.17
+-- Sat, 18 Apr 2015 22:27:13 +0000
 --
 
--- --------------------------------------------------------
+CREATE DATABASE `dbteam12` DEFAULT CHARSET latin1;
 
---
--- Table structure for table `item`
---
+USE `dbteam12`;
 
-CREATE TABLE IF NOT EXISTS `item` (
-  `SKU` int(10) NOT NULL AUTO_INCREMENT,
-  `Serial_number` int(11) NOT NULL,
-  `Description` tinytext,
-  `Manufacturer` int(11) DEFAULT NULL,
-  `Stock_Count` int(4) DEFAULT NULL,
-  PRIMARY KEY (`SKU`,`Serial_number`),
-  KEY `Item_fk1` (`Manufacturer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item_manufacturer`
---
-
-CREATE TABLE IF NOT EXISTS `item_manufacturer` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Manufacturer` text,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `purchase_order_log`
---
-
-CREATE TABLE IF NOT EXISTS `purchase_order_log` (
-  `PONumber` int(9) NOT NULL AUTO_INCREMENT,
-  `SKU` int(10) NOT NULL,
-  `DATETIME` int(11) NOT NULL,
-  `Count` int(11) NOT NULL,
-  `Purchaser` varchar(20) NOT NULL,
-  PRIMARY KEY (`PONumber`),
-  KEY `Purchase_Order_Log_fk1` (`SKU`),
-  KEY `Purchase_Order_Log_fk2` (`Purchaser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room_type`
---
-
-CREATE TABLE IF NOT EXISTS `room_type` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Room type` text,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rooms`
---
-
-CREATE TABLE IF NOT EXISTS `rooms` (
-  `Room_Number` int(3) NOT NULL AUTO_INCREMENT,
-  `Type` int(4) DEFAULT NULL,
-  PRIMARY KEY (`Room_Number`),
-  KEY `Rooms_fk1` (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaction_log`
---
-
-CREATE TABLE IF NOT EXISTS `transaction_log` (
-  `Transaction ID` int(9) NOT NULL AUTO_INCREMENT,
-  `SKU` int(10) NOT NULL,
-  `User_ID` varchar(20) NOT NULL,
-  `Count` int(11) NOT NULL,
-  `Room Number` int(11) NOT NULL,
-  `DATETIME` datetime NOT NULL,
-  PRIMARY KEY (`Transaction ID`),
-  KEY `Transaction_Log_fk1` (`SKU`),
-  KEY `Transaction_Log_fk2` (`User_ID`),
-  KEY `Transaction_Log_fk3` (`Room Number`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_position`
---
-
-CREATE TABLE IF NOT EXISTS `user_position` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Position` text,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(64) NOT NULL,
-  `First Name` text NOT NULL,
-  `Last Name` text NOT NULL,
-  `Position` int(2) NOT NULL,
-  PRIMARY KEY (`Username`),
-  KEY `Users_fk1` (`Position`)
+CREATE TABLE `allergy_lookup` (
+   `SKU` int(10) not null,
+   `LATEX` tinyint(1),
+   `PEANUTS` tinyint(1),
+   `ASPIRIN` tinyint(1),
+   `PENECILLIN` tinyint(1),
+   `INSULIN` tinyint(1),
+   PRIMARY KEY (`SKU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Constraints for dumped tables
---
+-- [Table `allergy_lookup` is empty]
 
---
--- Constraints for table `item`
---
-ALTER TABLE `item`
-  ADD CONSTRAINT `Item_fk1` FOREIGN KEY (`Manufacturer`) REFERENCES `item_manufacturer` (`ID`);
+CREATE TABLE `item` (
+   `SKU` int(10) not null auto_increment,
+   `Serial_number` int(11) not null,
+   `Description` tinytext,
+   `Manufacturer` int(11),
+   `Stock_Count` int(4),
+   PRIMARY KEY (`SKU`,`Serial_number`),
+   KEY `Item_fk1` (`Manufacturer`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1000000000;
 
---
--- Constraints for table `purchase_order_log`
---
-ALTER TABLE `purchase_order_log`
-  ADD CONSTRAINT `Purchase_Order_Log_fk2` FOREIGN KEY (`Purchaser`) REFERENCES `users` (`Username`),
-  ADD CONSTRAINT `Purchase_Order_Log_fk1` FOREIGN KEY (`SKU`) REFERENCES `item` (`SKU`);
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('1', '990435', 'Insulin Syringes, U-100', '1', '1000');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('2', '9001', 'Patient Bed', '3', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('2', '9002', 'Patient Bed', '3', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('3', '8001', 'Patient Table', '3', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('3', '8002', 'Patient Table', '3', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('4', '645', 'Surgical Gloves, Non-Latex', '2', '1000');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('5', '75928437', 'PCA Nebulizer', '2', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('5', '75928438', 'PCA Nebulizer', '2', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('6', '2943587', 'CareFusion Alaris PC', '3', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('7', '832865', 'Alaris Pump', '', '');
+INSERT INTO `item` (`SKU`, `Serial_number`, `Description`, `Manufacturer`, `Stock_Count`) VALUES ('999999999', '1', 'Insulin Syringes', '1', '500');
 
---
--- Constraints for table `rooms`
---
-ALTER TABLE `rooms`
-  ADD CONSTRAINT `Rooms_fk1` FOREIGN KEY (`Type`) REFERENCES `room_type` (`ID`);
+CREATE TABLE `item_manufacturer` (
+   `ID` int(11) not null auto_increment,
+   `Manufacturer` text,
+   PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 
---
--- Constraints for table `transaction_log`
---
-ALTER TABLE `transaction_log`
-  ADD CONSTRAINT `Transaction_Log_fk3` FOREIGN KEY (`Room Number`) REFERENCES `rooms` (`Room_Number`),
-  ADD CONSTRAINT `Transaction_Log_fk1` FOREIGN KEY (`SKU`) REFERENCES `item` (`SKU`),
-  ADD CONSTRAINT `Transaction_Log_fk2` FOREIGN KEY (`User_ID`) REFERENCES `users` (`Username`);
+INSERT INTO `item_manufacturer` (`ID`, `Manufacturer`) VALUES ('1', 'MedCo');
+INSERT INTO `item_manufacturer` (`ID`, `Manufacturer`) VALUES ('2', 'MedSys');
+INSERT INTO `item_manufacturer` (`ID`, `Manufacturer`) VALUES ('3', 'LifeAssist');
 
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `Users_fk1` FOREIGN KEY (`Position`) REFERENCES `user_position` (`ID`);
---
--- Database: `test`
---
---
--- Database: `yes`
---
+CREATE TABLE `purchase_order_log` (
+   `PONumber` int(9) not null auto_increment,
+   `SKU` int(10) not null,
+   `DATETIME` int(11) not null,
+   `Count` int(11) not null,
+   `Purchaser` varchar(20) not null,
+   PRIMARY KEY (`PONumber`),
+   KEY `Purchase_Order_Log_fk1` (`SKU`),
+   KEY `Purchase_Order_Log_fk2` (`Purchaser`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=2;
 
--- --------------------------------------------------------
+INSERT INTO `purchase_order_log` (`PONumber`, `SKU`, `DATETIME`, `Count`, `Purchaser`) VALUES ('1', '6', '1429395755', '2', 'Admin');
 
---
--- Table structure for table `rooms`
---
+CREATE TABLE `room_type` (
+   `ID` int(11) not null auto_increment,
+   `Room type` text,
+   PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
-CREATE TABLE IF NOT EXISTS `rooms` (
-  `Room_Number` int(3) NOT NULL AUTO_INCREMENT,
-  `Type` int(4) DEFAULT NULL,
-  PRIMARY KEY (`Room_Number`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- [Table `room_type` is empty]
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `rooms` (
+   `Room_Number` int(3) not null auto_increment,
+   `Type` int(4),
+   PRIMARY KEY (`Room_Number`),
+   KEY `Rooms_fk1` (`Type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
----------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS 'allergy_lookup'
-(
-   `SKU`             INT(10) NOT NULL,
-   `LATEX`           BOOLEAN,
-   `PEANUTS`         BOOLEAN,
-   `ASPIRIN`         BOOLEAN,
-   `PENECILLIN`      BOOLEAN,
-   `INSULIN`         BOOLEAN,
-   PRIMARY KEY(`SKU`)
-);
+-- [Table `rooms` is empty]
 
-ALTER TABLE dbteam12.allergy_lookup
-  ADD CONSTRAINT `FK_allergy_lookup_1`
-  FOREIGN KEY (`SKU`)
-  REFERENCES dbteam12.item(`SKU`)
+CREATE TABLE `transaction_log` (
+   `Transaction ID` int(9) not null auto_increment,
+   `SKU` int(10) not null,
+   `User_ID` varchar(20) not null,
+   `Count` int(11) not null,
+   `Room Number` int(11) not null,
+   `DATETIME` datetime not null,
+   PRIMARY KEY (`Transaction ID`),
+   KEY `Transaction_Log_fk1` (`SKU`),
+   KEY `Transaction_Log_fk2` (`User_ID`),
+   KEY `Transaction_Log_fk3` (`Room Number`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- [Table `transaction_log` is empty]
+
+CREATE TABLE `user_position` (
+   `ID` int(11) not null auto_increment,
+   `Position` text,
+   PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6;
+
+INSERT INTO `user_position` (`ID`, `Position`) VALUES ('1', 'Nurse');
+INSERT INTO `user_position` (`ID`, `Position`) VALUES ('2', 'Doctor');
+INSERT INTO `user_position` (`ID`, `Position`) VALUES ('3', 'Medical_Admin');
+INSERT INTO `user_position` (`ID`, `Position`) VALUES ('4', 'Admin');
+INSERT INTO `user_position` (`ID`, `Position`) VALUES ('5', 'SuperAdmin');
+
+CREATE TABLE `users` (
+   `Username` varchar(20) not null,
+   `Password` varchar(64) not null,
+   `FirstName` text not null,
+   `LastName` text not null,
+   `Position` int(2) not null,
+   `HasAccess` tinyint(1) not null default '1',
+   PRIMARY KEY (`Username`),
+   KEY `Users_fk1` (`Position`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`Username`, `Password`, `FirstName`, `LastName`, `Position`, `HasAccess`) VALUES ('Admin', '123', 'admin', 'admin', '4', '1');
+INSERT INTO `users` (`Username`, `Password`, `FirstName`, `LastName`, `Position`, `HasAccess`) VALUES ('bbanner', 'hulk', 'Bruce', 'Banner', '5', '1');
+INSERT INTO `users` (`Username`, `Password`, `FirstName`, `LastName`, `Position`, `HasAccess`) VALUES ('Doctor', '123', 'F_name', 'L_Name', '1', '1');
+INSERT INTO `users` (`Username`, `Password`, `FirstName`, `LastName`, `Position`, `HasAccess`) VALUES ('Medical_admin', '123', 'medical_admin', 'medical_admin', '3', '1');
+INSERT INTO `users` (`Username`, `Password`, `FirstName`, `LastName`, `Position`, `HasAccess`) VALUES ('Nurse', '123', 'D_nurse', '_nurse', '1', '1');
