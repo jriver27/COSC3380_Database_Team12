@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && (int)$_SESSION['position'] < 3){
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && ((int)$_SESSION['position'] < 3 || (int)$_SESSION['position'] == 5)){
 		echo "Welcome to the member's area, " . $_SESSION['username'] ;
 		} else {
 		header("Location: RestrictedIndex.php");
