@@ -45,11 +45,43 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     </div>
                 </div>
                 <div class="blockquote-reverse">
-                    <p>something goes here </p>
-                    <p>something goes here </p>
-                    <p>something goes here </p>
-                    <p>something goes here </p>
-                    <p>something goes here </p>
+<!--
+            pseudo code
+            ---------------------
+            if( user is nurse or doctor)
+            {
+                if( they have any checked out item)
+                    output all there current checked out items
+                else
+                    output "echo $_SESSION['username']. has no checked out items"
+            }
+            else if( user is medical admin)
+            {
+                if( medical admin has any OPEN po)
+                {
+                    output the open po;
+                }else
+                {
+                    output nothing.
+
+                }
+                &&&
+                // If we have time we can do this as well.
+                if (any consumible is below a certain threshold )
+                {
+                    output an alert that a certain item is running low
+                }
+                else{
+                    output that everything looks good
+                    }
+            }
+
+-->
+                    <p>something goes here  remove these as soon as we fill this</p>
+                    <p>something goes here  remove these as soon as we fill this</p>
+                    <p>something goes here  remove these as soon as we fill this</p>
+                    <p>something goes here  remove these as soon as we fill this</p>
+                    <p>something goes here  remove these as soon as we fill this</p>
                 </div>
             </div>
         </div>
