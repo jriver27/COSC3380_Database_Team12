@@ -12,9 +12,8 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="masthead">
-        <h3 class="text-muted">
+    <div class="container">
+        <h3 class="h3">
            About Us
         </h3>
         <nav>
@@ -27,7 +26,6 @@
             </ul>
         </nav>
     </div>
-</div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -56,11 +54,9 @@
         & Team 13
         )</p>
 </div>
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Please Contact Us anytime.</p>
-    </div>
-</footer>
+    <?php
+    include 'php/footer.php';
+    ?>
 </body>
 
 </html>

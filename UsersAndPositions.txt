@@ -1,0 +1,5 @@
+1=Nurse
+2=Doctor
+3=Medical_Admin
+4=Admin
+5=SuperAdmin
