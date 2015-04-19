@@ -17,7 +17,8 @@ $lowCredentials = '<li class="active"> <a href="restrictedIndex.php">Home</a>
             <li><a href="allergyCheck.php">Allergy Lookup</a></li>';
 
 $highCredentials = '<li><a href="createPO.php">Create Purchase Order</a></li>
-             <li><a href="adminDashboard.php">View Dashboard</a></li>';
+            <li><a href="adminDashboard.php">View Dashboard</a></li>';
+			<li><a href= "AddItem.php">Add Inventory</a></li>
 
 $adminCredentials = '<li class="active"><a href="createAccount.php">Account Options</a></li>';
 
