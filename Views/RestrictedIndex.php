@@ -31,6 +31,29 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             ?>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="pull-left">
+            <div class="well" style="border: solid;">
+                <div class="alert-info">
+                    <p class="panel" style="text-align: center;">** Notification area **</p>
+                </div>
+                <div class="well-sm" style="text-align: center">
+                    <div class="close">
+                        <?php
+                        echo $_SESSION['username'];
+                        ?>
+                    </div>
+                </div>
+                <div class="blockquote-reverse">
+                    <p>something goes here </p>
+                    <p>something goes here </p>
+                    <p>something goes here </p>
+                    <p>something goes here </p>
+                    <p>something goes here </p>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     include 'php/footer.php';
     ?>
