@@ -30,7 +30,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 </div>
 <div class = "container-fluid">
     <table class = "table">
-    <tr><td>SKU</td><td>Description</td><td>Manufacturer</td><td>Stock</td></tr>
+    <tr><th>SKU</th><th>Description</th><th>Manufacturer</th><th>Stock</th></tr>
     <?php
         include 'php/dbconnect.php';
     $sql="SELECT SKU, Description, im.manufacturer As Manufacturer, SUM(IFNULL(Stock_Count, 1)) Stock_Count

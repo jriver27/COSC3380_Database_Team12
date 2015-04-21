@@ -38,10 +38,10 @@
 </div>
 <form action="" method="post" name="loginform">
     <div class="container-fluid">
-        <label for="itemrequested">Lookup By Item Name</label><br>
+<!--        <label for="itemrequested">Lookup By Item Name</label><br>-->
         <?php
         include 'php/dbconnect.php';
-        $sql="SELECT DISTINCT SKU, Description FROM item ORDER BY Description";
+        /*$sql="SELECT DISTINCT SKU, Description FROM item ORDER BY Description";
         $query = mysqli_query($link, $sql);
 
         echo "<select name=item value=''>Item Name</option>"; // list box select command
@@ -51,11 +51,11 @@
             echo $row["Description"];
             echo "</option>";
         }
-            echo "</select>";// Closing of list box
+            echo "</select>";// Closing of list box*/
         ?>
 
         <input type="submit" alt="lookup" name="lookup" value="Look Up" id="submit_btn">
-        <p><label for="allergyList">Search by Allergies:</label><br>
+        <p><label for="allergyList"><br>OR <br>Search by Allergies:</label><br>
         <?php
         //$sql = "SHOW COLUMNS FROM allergy_lookup WHERE Field NOT LIKE 'SKU'";
         $sql = "SELECT COLUMN_NAME
@@ -74,6 +74,54 @@
         </p>
     </div>
 </form>
+
+<div id="results">
+        <?php
+        $where = '';
+        if(isset($_POST['allergies'])) {
+            echo '<table class="table" width="50%" align="left"><th>Item Name</th><th>Manufacturer</th>';
+            if (is_array($_POST['allergies'])) {
+                foreach ($_POST['allergies'] as $value) {
+                    $where = $where + $value + '=1 AND ';
+                }
+                $where = substr($where, 0, -4);
+            } else {
+                $value = $_POST['allergies'];
+                $where = $where + $value + '=1';
+            }
+            $sql = 'SELECT Description, im.manufacturer
+                    FROM item, allergy_lookup, item_manufacturer im
+                    WHERE item.SKU=allergy_lookup.SKU AND item.manufacturer=im.ID AND ' + $where;
+            $query = mysqli_query($link, $sql);
+
+            while ($row = mysqli_fetch_array($query)) {
+                echo '<tr>';
+                echo "<td>" . ($row['Description']) . "</td>";
+                echo "<td>" . ($row['manufacturer']) . "</td>";
+                echo '</tr>';
+            }
+        }
+        ?>
+        </table>
+</div>
+
+<script>
+    function searchByItem(var whereClause) {
+        var sqlQuery = "SELECT /*need pivot capability */ FROM allergy_lookup WHERE ";
+        sqlQuery += whereClause;
+
+        /* add code to create tables */
+    }
+
+    function searchByAllergies(var whereClause) {
+        var sqlQuery = "SELECT item_description FROM item, allergy_lookup WHERE item.SKU = allergy_lookup.SKU AND ";
+        sqlQuery += whereClause;
+
+
+    }
+
+
+</script>
 <?php
 include 'php/footer.php';
 ?>
