@@ -15,11 +15,19 @@ function getInput($data) {
 
 function insert_item($PO_num)
 {
-    include 'php/dbconnect.php';
+    if($PO_num<=0)
+	{
+		return($PO_num);
+	}
+	
+	include 'php/dbconnect.php';
     if ($link->connect_error) {
         die("Connection failed: " . $link->connect_error);
     }
-
+	
+	
+	
+	$Insert_OK=TRUE;
     $sql = "SELECT SKU, Count FROM purchase_order_log WHERE PONumber = '$PO_num'";
     $result = $link->query($sql);
 
@@ -64,6 +72,7 @@ function insert_item($PO_num)
 				}
 				else {
 					//Database error
+					$Insert_OK=FALSE;
 				}
 		}
 		else
@@ -111,11 +120,13 @@ function insert_item($PO_num)
 					} 
 					else 
 					{
+						$Insert_OK=FALSE;
 						echo "Error: " . $sql . "<br>" . $link->error;
 					}
 				}
 				else {
 					//Database error
+					$Insert_OK=FALSE;
 				}
 			}
 		}
@@ -123,8 +134,14 @@ function insert_item($PO_num)
     }
     else {
         //error PO number not found
+		$Insert_OK=FALSE;
     }
-
+	
+	if($Insert_OK==TRUE)
+	{
+		close_PO($PO_num);
+	}
+	
     return $PO_num;
 }
 
@@ -225,5 +242,15 @@ function get_manufacturer($manufacturer_num)
     return $manufacturer_name;
 }
 
+function close_PO($PO)
+{
+	include 'php/dbconnect.php';
+    if ($link->connect_error) {
+        die("Connection failed: " . $link->connect_error);
+    }
+	
+	$sql = "UPDATE purchase_order_log SET Open_PO=FALSE WHERE PONumber=$PO";
+			$result = $link->query($sql);
+}
 
 ?>

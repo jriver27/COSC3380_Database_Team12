@@ -57,6 +57,7 @@ CREATE TABLE `purchase_order_log` (
    `DATETIME` int(11) not null,
    `Count` int(11) not null,
    `Purchaser` varchar(20) not null,
+   'Open_PO' boolean(1) NOT NULL,
    PRIMARY KEY (`PONumber`),
    KEY `Purchase_Order_Log_fk1` (`SKU`),
    KEY `Purchase_Order_Log_fk2` (`Purchaser`)
