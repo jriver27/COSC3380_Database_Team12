@@ -9,6 +9,7 @@ session_start();
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="../favicon.ico" rel="icon">
     <title>Medical Inventory</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/sticky-footer-navbar.css"/>
 </head>

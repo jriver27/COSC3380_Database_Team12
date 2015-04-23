@@ -2246,6 +2246,21 @@ pre code {
 table {
   background-color: transparent;
 }
+table.dashboard { /*special for dashboard mini tables */
+    height: 150px;
+    border: 10px;
+    border-color: red;
+    border-collapse: collapse;
+    overflow: scroll;
+}
+table.dashboard.td {
+    width: 25px;
+    border: 10px;
+    border-color: red;
+}
+#tableformatting {
+    display: inline-block;
+}
 caption {
   padding-top: 8px;
   padding-bottom: 8px;

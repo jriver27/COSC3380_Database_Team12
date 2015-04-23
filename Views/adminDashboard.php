@@ -15,6 +15,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
     <title>Medical Inventory Login</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/sticky-footer-navbar.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 
 <body>
@@ -29,52 +30,76 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
             ?>
         </div>
     </div>
-    <div class="container">
 
-        <div class="container" style="border: double">
-            <p> All Users  </p>
-        </div>
 
-        <div class="container" style="border: double">
-            <p> All PO Transactions with a time selection
-                example.
-                view pos from date time 1/1/2015 to 3/15/2015
-                Who Opened them/
-                when where they open/
-                Who Closed them/
-                when where they closed/
-            </p>
-        </div>
+<table style="width: 80%; margin-left: 10%">
+    <tr>
+        <td>
+            <table class="dashboard">
+                <tr>
+                    <th>First Name</th><th>Last Name</th>
+                </tr>
+                <tr>
+                    <td>jjf</td><td>jdjfdj</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="dashboard">
+                <tr>
+                    <th>Table</th><th>#2</th>
+                </tr>
+                <tr>
+                    <td>jjf</td><td>jdjfdj</td>
+                </tr>
+                <tr>
+                    <td>PO Transactions between select time</td>
+                    <td>view pos from date time 1/1/2015 to 3/15/2015</td>
+                </tr>
+                <tr>
+                    <td>Who Opened them</td>
+                    <td>when were they open/</td>
+                </tr>
+                <tr>
+                    <td>Who Closed them</td>
+                    <td>when where they closed</td>
+                </tr>
+            </table>
+        </td>
+        </tr>
+    <tr>
+        <td>
+            <table class="dashboard">
+                <tr>
+                    <td>All by time History of a selected NON Consumable Item </td>
+                    <td>Between this and that time:Item sku " cccxxxccc333" </td>
+                </tr>
+                <tr>
+                    <td>Checked out by X at dd/mm/yyyy time:00:00 </td>
+                    <td>Returned by X at dd/mm/yyyy time:00:00 </td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="dashboard">
+                <tr>
+                    <td> All open PO's</td>
+                    <td>example:</td>
+                </tr>
+                <tr>
+                    <td>PO ID: Open by XXX</td>
+                    <td>Open Date:</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </table>
 
-        <div class="container" style="border: double">
-            <p> All / by time / History of a selected NON Consumable Item
-                example
-                Between this and that time:
-                Item sku " cccxxxccc333"
-                Checked out by X at dd/mm/yyyy time:00:00
-                Returned by X at dd/mm/yyyy time:00:00
-
-            </p>
-        </div>
-
-        <div class="container"style="border: double">
-            <p> All open PO's
-                example:
-                PO ID:
-                Open by XXX
-                Open Date:
-
-            </p>
-        </div>
-
-        <div class="container" style="border: double">
-            <p> Other Possible metrics here.</p>
-        </div>
-
-        <div>
-            <p> Download as cvs</p>
-        </div>
-
+    <div class="container" style="border: double">
+        <p> Other Possible metrics here.</p>
+    </div>
+    <div>
+        <p> Download as cvs</p>
     </div>
 
     <?php
