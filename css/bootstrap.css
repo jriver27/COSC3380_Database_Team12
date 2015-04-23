@@ -2259,6 +2259,9 @@ table.dashboard.td {
     border-color: red;
     margin-right: 20px;
 }
+table.dashboard.th {
+    text-align: center;
+}
 #tableformatting {
     display: inline-block;
 }
