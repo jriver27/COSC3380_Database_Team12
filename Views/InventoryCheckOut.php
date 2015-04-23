@@ -34,8 +34,8 @@
 				?>
 			</div>
 		</div>
-        <div class="container-fluid" style="position: relative; text-align: center;">
-			<div style="display: inline-block; margin-right: 50px;">
+        <div class="container-fluid" style="position: relative; text-align: center; ">
+			<div style="display: inline-block; margin-right: 50px;vertical-align:top; ">
 				<form  method="post" name="submit1">
 					
 					<label for="equipment">Equipment Requested</label>
