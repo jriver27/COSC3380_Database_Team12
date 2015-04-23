@@ -78,6 +78,7 @@
         $where = '';
         if(isset($_POST['allergies'])) {
             echo '<table class="table" width="50%" align="left"><th>Item Name</th><th>Manufacturer</th>';
+            echo '<caption>Items NOT acceptable for Patient</caption>';
             if (is_array($_POST['allergies'])) {
                 foreach ($_POST['allergies'] as $value) {
                     $where = $where.$value.'=1 AND ';
