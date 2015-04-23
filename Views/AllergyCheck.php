@@ -53,9 +53,7 @@
         }
             echo "</select>";// Closing of list box*/
         ?>
-
-        <input type="submit" alt="lookup" name="lookup" value="Look Up" id="submit_btn">
-        <p><label for="allergyList"><br>OR <br>Search by Allergies:</label><br>
+        <p><label for="allergyList"><br>Search by Allergies:</label><br>
         <?php
         //$sql = "SHOW COLUMNS FROM allergy_lookup WHERE Field NOT LIKE 'SKU'";
         $sql = "SELECT COLUMN_NAME
@@ -82,16 +80,17 @@
             echo '<table class="table" width="50%" align="left"><th>Item Name</th><th>Manufacturer</th>';
             if (is_array($_POST['allergies'])) {
                 foreach ($_POST['allergies'] as $value) {
-                    $where = $where + $value + '=1 AND ';
+                    $where = $where.$value.'=1 AND ';
                 }
                 $where = substr($where, 0, -4);
             } else {
                 $value = $_POST['allergies'];
-                $where = $where + $value + '=1';
+                $where = $where.$value.'=1';
             }
             $sql = 'SELECT Description, im.manufacturer
                     FROM item, allergy_lookup, item_manufacturer im
-                    WHERE item.SKU=allergy_lookup.SKU AND item.manufacturer=im.ID AND ' + $where;
+                    WHERE item.SKU=allergy_lookup.SKU AND item.manufacturer=im.ID AND '.$where;
+
             $query = mysqli_query($link, $sql);
 
             while ($row = mysqli_fetch_array($query)) {
