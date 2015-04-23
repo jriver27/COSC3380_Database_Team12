@@ -69,10 +69,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
                 include "php/getNONConsumablesIntoDropDown.php";
                 ?>
             </select>
-            <input type="submit" alt="lookup" name="submit" value="Refresh filters" id="submit_btn">
         </td>
         <td>
-            Add filters for other tables here!
+            <input type="submit" alt="lookup" name="submit" value="Refresh filters" id="submit_btn">
         </td>
     </tr>
     <tr>
