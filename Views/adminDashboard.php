@@ -58,16 +58,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
         </td>
         </tr>
     <tr>
-        <td>  <br>    </td><td>    <br>  </td>
+        <td>  <br>    </td>
+        <td>  <br>    </td>
     <!--        Blank Row To add spacing-->
     </tr>
     <tr>
         <td>
-            <select name="item" id="item">
+            <select name="item" id="item" onchange="php: populateNCitemHistory()">
                 <?php
                 include "php/getNONConsumablesIntoDropDown.php";
                 ?>
             </select>
+            <input type="submit" alt="lookup" name="submit" value="Refresh filters" id="submit_btn">
         </td>
         <td>
             Add filters for other tables here!
@@ -78,12 +80,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
             <table class="dashboard">
                 <caption>Select Non Consumable Item for History</caption>
                 <tr>
-                    <th>History of a selected NON Consumable Item</th>
-                    <th>Between this and that time:Item sku " cccxxxccc333" </th>
+                    <th>Date Time</th>
+                    <th>User</th>
+                    <th>Room Number</th>
                 </tr>
                 <tr>
-                    <td>Checked out by X at dd/mm/yyyy time:00:00 </td>
-                    <td>Returned by X at dd/mm/yyyy time:00:00 </td>
+<!--                    --><?php
+//                        populateNCitemHistory()
+//                    ?>
                 </tr>
             </table>
         </td>
@@ -121,6 +125,24 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
         }
     }
 
+    function populateNCitemHistory($tempSKU, $tempSerial) {
+        global $link;
+        $sql='SELECT Transaction_ID, DATETIME, user_ID, RoomNumber
+              from transaction_log INNER join item
+              on (transaction_log.SKU = item.SKU AND transaction_log.serial_number=item.serial_number)
+              WHERE transaction_log.SKU='.$tempSKU.' AND transaction_log.serial_number='.$tempSerial;
+
+        $query = mysqli_query($link, $sql);
+
+        while($row = mysqli_fetch_array($query))
+        {
+            echo '<tr>';
+            echo "<td>".($row['DATETIME'])."</td>"."<td>".($row['user_ID'])."</td>"."<td>".($row['RoomNumber'])."</td>";
+            echo '</tr>';
+        }
+
+    }
+
     function populatePOTable() {
         echo "<tr><td>jjf</td><td>jdjfdj</td></tr>";
         echo "<tr><td>PO Transactions between select time</td><td>view pos from date time 1/1/2015 to 3/15/2015</td></tr>";
@@ -130,29 +152,30 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
 
     function populateOpenPOTable() {
         global $link;
-        $sql='SELECT FirstName, LastName, user_position.Position
-              FROM users INNER JOIN user_position
-              ON users.position = user_position.ID';
+        $sql='SELECT PONumber, DateTime, Purchaser From purchase_order_log WHERE Open_PO = 1';
 
         $query = mysqli_query($link, $sql);
 
         while($row = mysqli_fetch_array($query))
         {
             echo '<tr>';
-            echo "<td>".($row['FirstName'])."</td>"."<td>".($row['LastName'])."</td>"."<td>".($row['Position'])."</td>";
+            echo "<td>".($row['PONumber'])."</td>"."<td>".($row['Purchaser'])."</td>"."<td>".($row['DateTime'])."</td>";
             echo '</tr>';
         }
     }
     ?>
+    <div id="results">
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $itemKey = getInput($_POST["item"]);
+            $listItem =  explode('-', $itemKey);
 
-    <div class="container" style="border: double">
-        <p> Other Possible metrics here.</p>
+            populateNCitemHistory($listItem[0],$listItem[1]);
 
-    </div>
-    <div>
-        <p> Download as cvs</p>
-    </div>
 
+
+        }
+        ?>
     <?php
     include 'php/footer.php';
     ?>

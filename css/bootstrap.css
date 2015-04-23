@@ -2250,6 +2250,7 @@ table.dashboard { /*special for dashboard mini tables */
     height: 150px;
     border: 10px;
     border-color: red;
+    border-style: double;
     border-collapse: collapse;
     overflow: scroll;
 }
