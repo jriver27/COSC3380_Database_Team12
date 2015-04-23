@@ -15,6 +15,7 @@ if($count==1){
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $obj->Username;
         $_SESSION['position'] = $obj->Position;
+		$_SESSION['checkout'] = '';
         $website = "../restrictedIndex.php";
         header("Location:$website ");
     }

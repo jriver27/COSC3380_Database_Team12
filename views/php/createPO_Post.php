@@ -46,7 +46,7 @@ function create_purchase_order($SKU, $count, $purchaser)
 
     $timestamp = time();
 
-    $sql = "INSERT INTO purchase_order_log (SKU, DATETIME, COUNT, PURCHASER) VALUES ('$SKU','$timestamp','$count','$purchaser')";
+    $sql = "INSERT INTO purchase_order_log (SKU, DATETIME, COUNT, PURCHASER, Open_PO) VALUES ('$SKU', NOW(),'$count','$purchaser', TRUE)";
     if ($link->query($sql) === TRUE) {
         echo "New Purchase Order created successfully";
     } else {

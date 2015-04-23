@@ -54,17 +54,39 @@
 						$timestamp = time();
 						$user = $_SESSION['username'];
 						
-						echo $user . ' has succesfully checked in item with serial number ' . $var . ' on ' . date("Y-m-d",$timestamp) . ' from room ' . $roomnum;
+						$sql="Select * FROM item WHERE SKU=$sku AND Serial_Number=$sn";
+						$query = mysqli_query($link, $sql);
+						$row = mysqli_fetch_array($query);
 						
-						$sql="INSERT INTO transaction_log(SKU, Serial_Number, User_ID, Count, Room_Number) VALUES ($sku, $sn, '$user', $count, $roomnum);";
-						$link->query($sql);
+						
+						if (count($row)<1)
+							echo "Item does not exist.";
+						
+						else
+							if ($row['Stock_Count'] == 1)
+								echo "Item already checked in.";
+						
+						else
+							if ($row['Stock_Count'] == 0)
+							{						
+								$sql="INSERT INTO transaction_log(SKU, SerialNumber, User_ID, Count, RoomNumber) VALUES ($sku, $sn, '$user', $count, $roomnum);";
+								
+								if ($link->query($sql) === TRUE) 
+								{
+									$sql ="UPDATE `item` SET `Stock_Count`=1 WHERE `SKU`=$sku AND `Serial_number`=$sn";
+									$link->query($sql);
+									echo $user . ' has succesfully checked in item with SKU ' . $sku . ' and serial number ' . $sn . ' on ' . date("Y-m-d",$timestamp) . ' from room ' . $roomnum;
+								}
+								else	echo "Error: " . $sql . "<br>" . $link->error;
+							}
+						
 					}
 				?>
 			</div>
-			</div>
+		</div>
 		<?php
-				include 'php/footer.php';
-			?>
-			
-		</body>
-	</html>	
+			include 'php/footer.php';
+		?>
+		
+	</body>
+</html>	
