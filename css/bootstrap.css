@@ -2257,6 +2257,7 @@ table.dashboard.td {
     width: 25px;
     border: 10px;
     border-color: red;
+    margin-right: 20px;
 }
 #tableformatting {
     display: inline-block;

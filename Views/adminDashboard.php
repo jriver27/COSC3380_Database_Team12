@@ -30,18 +30,40 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
             ?>
         </div>
     </div>
+    <?php
+    include 'php/dbconnect.php';
+    function populateUserListTable() {
+        $sql="SELECT FirstName, LastName, up.Position
+              from users RIGHT JOIN user_position up
+              ON users.position = up.ID";
+        $query = mysqli_query($link, $sql);
 
+        while($row = mysqli_fetch_array($query))
+        {
+            echo '<tr>';
+            echo "<td>".($row['FirstName'])."</td>"."<td>".($row['LastName'])."</td>"."<td>".($row['Position'])."</td>";
+            echo '</tr>';
+        }
+    }
 
-<table style="width: 80%; margin-left: 10%">
+    function populatePOTable() {
+        echo "<tr><td>jjf</td><td>jdjfdj</td></tr>";
+        echo "<tr><td>PO Transactions between select time</td><td>view pos from date time 1/1/2015 to 3/15/2015</td></tr>";
+        echo "<tr><td>Who Opened them</td><td>when were they open/</td></tr>";
+        echo "<tr><td>Who Closed them</td><td>when where they closed</td></tr>";
+    }
+    ?>
+
+<table style="width: 80%; margin-left: 10%;">
     <tr>
         <td>
             <table class="dashboard">
                 <tr>
-                    <th>First Name</th><th>Last Name</th>
+                    <th>First Name</th><th>Last Name</th><th>Role</th>
                 </tr>
-                <tr>
-                    <td>jjf</td><td>jdjfdj</td>
-                </tr>
+                <?php
+                    populateUserListTable();
+                ?>
             </table>
         </td>
         <td>
@@ -49,21 +71,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true &&  (int)$_SES
                 <tr>
                     <th>Table</th><th>#2</th>
                 </tr>
-                <tr>
-                    <td>jjf</td><td>jdjfdj</td>
-                </tr>
-                <tr>
-                    <td>PO Transactions between select time</td>
-                    <td>view pos from date time 1/1/2015 to 3/15/2015</td>
-                </tr>
-                <tr>
-                    <td>Who Opened them</td>
-                    <td>when were they open/</td>
-                </tr>
-                <tr>
-                    <td>Who Closed them</td>
-                    <td>when where they closed</td>
-                </tr>
+                <?php
+                populatePOTable();
+                ?>
             </table>
         </td>
         </tr>
