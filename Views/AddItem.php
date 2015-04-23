@@ -38,14 +38,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <tr><td>PO Number</td><td>SKU</td><td>Description</td><td>Manufacturer</td><td>Date</td><td>Count</td><td>Purchaser</td></tr>
     <?php
         include 'php/dbconnect.php';
-    $sql="SELECT purchase_order_log.PONumber, purchase_order_log.SKU, I.Description, item_manufacturer.Manufacturer, purchase_order_log.DATETIME, purchase_order_log.Count, purchase_order_log.Purchaser from purchase_order_log, (SELECT DISTINCT SKU, Manufacturer, Description From item)AS I, item_manufacturer where purchase_order_log.SKU=I.SKU and I.Manufacturer=item_manufacturer.ID order by purchase_order_log.PONumber ";
+    $sql="SELECT purchase_order_log.PONumber, purchase_order_log.SKU, I.Description, item_manufacturer.Manufacturer, purchase_order_log.DATETIME, purchase_order_log.Count, purchase_order_log.Purchaser from purchase_order_log, (SELECT DISTINCT SKU, Manufacturer, Description From item)AS I, item_manufacturer where purchase_order_log.SKU=I.SKU and I.Manufacturer=item_manufacturer.ID and purchase_order_log.Open_PO=TRUE order by purchase_order_log.PONumber ";
     $query = mysqli_query($link, $sql);
 
     while($row = mysqli_fetch_array($query))
     {
         
         echo '<tr>';
-        echo "<td>".($row['PONumber'])."</td>"."<td>".($row['SKU'])."</td>"."<td>".($row['Description'])."</td>"."<td>".($row['Manufacturer'])."</td>"."<td>".(date('m/d/Y',($row['DATETIME'])))."</td>"."<td>".($row['Count'])."</td>"."<td>".($row['Purchaser'])."</td>";
+        echo "<td>".($row['PONumber'])."</td>"."<td>".($row['SKU'])."</td>"."<td>".($row['Description'])."</td>"."<td>".($row['Manufacturer'])."</td>"."<td>".(date('m/d/Y', strtotime($row['DATETIME'])))."</td>"."<td>".($row['Count'])."</td>"."<td>".($row['Purchaser'])."</td>";
         echo '</tr>';
     }
     ?>
@@ -70,7 +70,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <?php
 if(isset($_POST['Submit']))
 {
-    insert_item($PO_num);
+	insert_item($PO_num);
 
 	
     
