@@ -54,7 +54,7 @@ INSERT INTO `item_manufacturer` (`ID`, `Manufacturer`) VALUES ('3', 'LifeAssist'
 CREATE TABLE `purchase_order_log` (
    `PONumber` int(9) not null auto_increment,
    `SKU` int(10) not null,
-   `DATETIME` int(11) not null,
+   `DATETIME` datetime not null,
    `Count` int(11) not null,
    `Purchaser` varchar(20) not null,
    PRIMARY KEY (`PONumber`),
